@@ -1,0 +1,1249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Textura Wallcraft Studio - Premium Wall Finishes & Texture Design.">
+    <title>Textura Wallcraft Studio | Artistry in Stone</title>
+    
+    <!-- Google Fonts for Premium Look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           1. ROOT VARIABLES
+           ========================================= */
+        :root {
+            --primary-gold: #C59D5F;
+            --gold-hover: #D4AF37;
+            --bg-dark: #121212;
+            --bg-card: #1C1C1C;
+            --bg-section: #181818;
+            --text-main: #E0E0E0;
+            --text-muted: #999999;
+            --font-heading: 'Playfair Display', serif; 
+            --font-body: 'Lato', sans-serif;           
+        }
+
+        /* =========================================
+           2. GLOBAL STYLES
+           ========================================= */
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.8;
+            letter-spacing: 0.02em;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: var(--font-heading);
+            color: var(--primary-gold); 
+            margin-bottom: 1.2rem;
+            font-weight: 400; 
+            margin-top: 0;
+            line-height: 1.3;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; cursor: pointer; }
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        .container {
+            width: 88%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        .text-center { text-align: center; }
+
+        /* =========================================
+           3. COMPONENTS
+           ========================================= */
+        .btn-primary {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--primary-gold); 
+            padding: 12px 32px;
+            border-radius: 1px; 
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--primary-gold);
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            transition: all 0.4s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-gold);
+            color: var(--bg-dark); 
+        }
+
+        .btn-cta {
+            display: inline-block;
+            background-color: var(--primary-gold); 
+            color: var(--bg-dark); 
+            padding: 12px 32px;
+            border-radius: 1px; 
+            font-weight: 600; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid var(--primary-gold);
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 0; 
+            transition: all 0.4s ease;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--bg-dark); 
+            color: var(--primary-gold); 
+            border-color: var(--primary-gold); 
+        }
+
+        .section-tag {
+            display: block;
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.75rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            opacity: 0.9;
+        }
+        
+        .separator-line {
+            width: 60px;
+            height: 1px;
+            background-color: var(--primary-gold);
+            margin: 30px auto;
+            opacity: 0.5;
+        }
+
+        .read-story-link {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--text-main);
+            border-bottom: 1px solid var(--primary-gold);
+            padding-bottom: 5px;
+            margin-top: 20px;
+            font-style: italic;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .read-story-link:hover {
+            color: var(--primary-gold);
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           4. HEADER & NAV (FIXED)
+           ========================================= */
+        .site-header {
+            padding: 15px 0; 
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background-color: rgba(18, 18, 18, 0.98);
+            position: fixed; 
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .site-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+        }
+
+        /* LOGO STYLE */
+        .logo-image {
+            height: 65px; 
+            width: auto;  
+            object-fit: contain; 
+            border-radius: 12px;
+            border: none; 
+            background-color: transparent; 
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover .logo-image {
+            transform: scale(1.03); 
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo h1 {
+            font-size: 1.4rem;
+            margin: 0;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            font-weight: 400;
+            line-height: 1.1;
+        }
+        
+        .logo span { color: var(--primary-gold); }
+
+        .main-nav ul { display: flex; gap: 40px; align-items: center; }
+        .main-nav a { 
+            color: var(--text-main); 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            font-weight: 400;
+            opacity: 0.8;
+            cursor: pointer;
+        }
+        .main-nav a:hover { opacity: 1; color: var(--primary-gold); }
+
+        .mobile-menu-icon { display: none; font-size: 1.5rem; color: var(--primary-gold); cursor: pointer;}
+
+        /* =========================================
+           5. HERO SECTION & MAIN PADDING
+           ========================================= */
+        
+        #main-content {
+            padding-top: 100px; 
+        }
+
+        .hero-section {
+            height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop'); 
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero-content h2 {
+            font-size: 3.8rem;
+            color: white; 
+            margin-bottom: 20px;
+            line-height: 1.1;
+            font-weight: 400;
+        }
+
+        .sub-text {
+            color: #d0d0d0;
+            font-size: 1.15rem;
+            margin-bottom: 50px;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* =========================================
+           6. SECTIONS GENERAL
+           ========================================= */
+        section { padding: 100px 0; }
+
+        .intro-section {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .intro-section h3 { font-size: 2.2rem; color: var(--text-main); font-style: italic;}
+        .intro-section p { font-size: 1.05rem; color: var(--text-muted); margin-top: 20px;}
+
+        /* Materials Grid */
+        .materials-section { background-color: var(--bg-card); }
+        
+        .section-header { margin-bottom: 60px; text-align: center;}
+        .section-header h4 { font-size: 3.5rem; color: var(--text-main); margin: 0; }
+
+        .material-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .material-card {
+            background: var(--bg-dark); 
+            border: 1px solid #2a2a2a;
+            transition: all 0.5s ease;
+        }
+
+        .material-card:hover {
+            border-color: rgba(197, 157, 95, 0.3);
+            transform: translateY(-3px);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 280px;
+            background-color: #252525;
+            position: relative;
+        }
+        
+        .texture-1 { background: radial-gradient(circle, #333 10%, transparent 10%), #252525; background-size: 10px 10px; }
+        .texture-2 { background: linear-gradient(45deg, #333 25%, transparent 25%, transparent 75%, #333 75%), #252525; background-size: 20px 20px; }
+        .texture-3 { background: repeating-linear-gradient(90deg, #333, #333 1px, transparent 1px, transparent 10px), #252525; }
+
+        .card-content { padding: 35px 30px; }
+        .material-card h5 { color: var(--text-main); font-size: 1.4rem; margin-bottom: 10px; letter-spacing: 1px;}
+        .material-card p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+
+        /* Projects */
+        .portfolio-section { background-color: var(--bg-dark); text-align: center;}
+        .portfolio-section h4 { font-size: 3.5rem; color: var(--text-main); margin-bottom: 40px; }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            margin-top: 40px;
+        }
+        
+        .gallery-item {
+            height: 300px;
+            background-color: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.8;
+            transition: 0.5s;
+        }
+        
+        .gallery-item:hover { opacity: 1; z-index: 2; transform: scale(1.02); }
+
+        /* About Split Layout */
+        .about-section { background-color: #141414; }
+        
+        .split-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .text-block h4 { font-size: 3.5rem; color: var(--text-main); margin-bottom: 30px;}
+        .text-block p { color: var(--text-muted); margin-bottom: 25px; font-size: 1.05rem; }
+        
+        .pull-quote {
+            border-left: 2px solid var(--primary-gold);
+            padding-left: 20px;
+            margin: 30px 0;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--text-main);
+            font-style: italic;
+        }
+
+        .image-block {
+            height: 500px;
+            background-color: #222;
+            position: relative;
+        }
+        
+        .image-block .real-img-placeholder {
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1620615307704-47b64906612b?q=80&w=800&auto=format&fit=crop') center/cover;
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        /* COMMITMENT & PROCESS */
+        .trust-container {
+            background-color: var(--bg-section);
+            padding: 100px 0;
+        }
+
+        .commitment-block { margin-bottom: 80px; }
+        
+        .commitment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-top: 50px;
+        }
+
+        .commitment-card {
+            border-top: 1px solid rgba(197, 157, 95, 0.4); 
+            padding-top: 25px;
+            text-align: left; 
+            transition: 0.3s;
+        }
+        
+        .commitment-card:hover { border-color: var(--primary-gold); }
+
+        .commitment-number {
+            display: block;
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            color: var(--primary-gold);
+            opacity: 0.4;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .commitment-title {
+            font-size: 1.2rem;
+            color: #fff;
+            margin-bottom: 15px;
+            font-family: var(--font-heading);
+            letter-spacing: 1px;
+        }
+        
+        .commitment-text {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        .process-block {
+            margin-top: 120px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 80px;
+        }
+
+        .process-block h4 { font-size: 3.5rem; }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 50px;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .process-grid::before {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 15%;
+            right: 15%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #333, transparent);
+            z-index: 0;
+        }
+
+        .process-step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            background: var(--bg-section); 
+            padding: 0 10px;
+        }
+
+        .step-number {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            color: var(--primary-gold);
+            border: 1px solid var(--primary-gold);
+            width: 40px;
+            height: 40px;
+            line-height: 38px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            background: var(--bg-section);
+        }
+
+        .process-step h5 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .process-step p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin: 0 auto;
+        }
+
+        /* CTA: THE INVITATION */
+        .cta-section {
+            background-color: var(--bg-card); 
+            background: linear-gradient(180deg, var(--bg-dark) 0%, #171717 100%);
+            padding: 140px 0;
+            text-align: center;
+            border-top: 1px solid rgba(197, 157, 95, 0.1);
+            position: relative;
+        }
+
+        .cta-frame {
+            border: 1px solid rgba(197, 157, 95, 0.3);
+            padding: 80px 40px;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            background-color: rgba(255, 255, 255, 0.01); 
+        }
+
+        .cta-frame::before, .cta-frame::after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 1px solid var(--primary-gold);
+            transition: 0.4s;
+        }
+        .cta-frame::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+        .cta-frame::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+        .cta-frame:hover::before, .cta-frame:hover::after { width: 30px; height: 30px; }
+
+        .cta-label {
+            font-family: var(--font-body);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--primary-gold);
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .cta-section h3 {
+            font-size: 3rem; 
+            color: var(--text-main);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .cta-section p {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .scarcity-stamp {
+            margin-top: 40px;
+            font-size: 0.75rem;
+            color: #666;
+            font-family: var(--font-heading); 
+            font-style: italic;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: inline-block;
+            padding-top: 15px;
+        }
+
+        /* FOOTER (Centered Single Column) */
+        .site-footer {
+            background-color: #050505;
+            padding: 100px 0;
+            border-top: 1px solid #1a1a1a;
+            color: var(--text-muted);
+            font-size: 1.1rem; 
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column; /* Vertical Stack */
+            align-items: center; /* Center horizontally */
+            text-align: center; /* Center text */
+            gap: 40px; /* Space between blocks */
+        }
+        
+        .footer-col h5 { 
+            color: var(--primary-gold); 
+            font-size: 1.2rem; 
+            letter-spacing: 3px; 
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .contact-details {
+            font-weight: 300;
+            color: var(--text-main);
+            margin-bottom: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-item { white-space: nowrap; }
+        
+        /* Gold Dot Separator */
+        .contact-item::after {
+            content: '•';
+            color: var(--primary-gold);
+            margin-left: 20px;
+            opacity: 0.7;
+        }
+        .contact-item:last-child::after { display: none; }
+
+        .collab-note {
+            font-style: italic; 
+            color: #666; 
+            font-size: 0.9rem; 
+            max-width: 400px;
+            margin: 0 auto 30px auto;
+        }
+
+        /* Social Icons */
+        .social-icons-container {
+            display: flex;
+            gap: 40px; /* Wider gap for premium feel */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* UPDATED SOCIAL ICON CSS: No transform */
+        .social-icon {
+            color: var(--primary-gold); /* Default Gold Color */
+            font-size: 1.5rem;
+            transition: opacity 0.4s ease; /* Only opacity change */
+        }
+
+        .social-icon:hover {
+            opacity: 0.7; /* Slight fade on hover, NO MOVEMENT */
+        }
+
+        .copyright {
+            margin-top: 80px;
+            padding-top: 30px;
+            border-top: 1px solid #111;
+            font-size: 0.8rem; 
+            text-align: center;
+            opacity: 0.4;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           STORY PAGE STYLES (NEW PREMIUM LAYOUT)
+           ========================================= */
+        #story-page {
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.8s ease-out;
+            background-color: var(--bg-dark);
+            min-height: 100vh;
+            
+            /* KEY UPDATE: Ensure story page covers fixed header */
+            position: absolute; /* or fixed, depending on if you want story to scroll */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 2000; /* Higher than header 1000 */
+        }
+
+        .story-header {
+            padding: 40px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .back-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            border-bottom: 1px solid transparent;
+            cursor: pointer;
+        }
+        .back-link:hover { color: var(--primary-gold); border-color: var(--primary-gold); }
+
+        /* Story Hero */
+        .story-hero {
+            padding: 100px 0 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Left align */
+            position: relative;
+        }
+
+        .story-hero h1 {
+            font-size: 4.5rem; /* Larger Title */
+            margin-bottom: 20px;
+            line-height: 1.1;
+            color: var(--primary-gold);
+            font-family: var(--font-heading);
+            max-width: 800px;
+        }
+        
+        .story-hero p.subtitle {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #fff;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: 5px;
+            border-left: 1px solid var(--primary-gold);
+            padding-left: 20px;
+        }
+
+        /* Timeline Container */
+        .story-timeline-container {
+            position: relative;
+            padding-left: 40px; /* Space for the line */
+            border-left: 1px solid rgba(197, 157, 95, 0.3); /* The Golden Line */
+            margin-left: 20px;
+        }
+
+        .story-chapter {
+            margin-bottom: 120px;
+            position: relative;
+        }
+
+        /* The Year Watermark */
+        .chapter-year {
+            position: absolute;
+            top: -60px;
+            left: -60px;
+            font-family: var(--font-heading);
+            font-size: 8rem;
+            color: rgba(255, 255, 255, 0.03); /* Subtle watermark */
+            z-index: 0;
+            line-height: 1;
+            font-weight: 700;
+        }
+
+        /* Chapter Dot on Timeline */
+        .chapter-dot {
+            position: absolute;
+            left: -46px; /* Adjust based on container padding */
+            top: 10px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--primary-gold);
+            border-radius: 50%;
+        }
+
+        .chapter-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .chapter-title {
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 30px;
+            font-family: var(--font-heading);
+        }
+
+        .story-chapter p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-align: left; /* Strict Left Alignment */
+            max-width: 650px; /* Optimal reading width */
+        }
+
+        /* Highlight Quote Box */
+        .story-quote-box {
+            border: 1px solid rgba(197, 157, 95, 0.2);
+            padding: 40px;
+            margin: 40px 0;
+            background: linear-gradient(to right, rgba(197,157,95,0.05), transparent);
+        }
+
+        .story-quote-box p {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--primary-gold);
+            font-style: italic;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        .highlight { color: white; font-weight: 400; }
+
+        /* Footer inside Story */
+        .story-footer {
+            text-align: left;
+            padding: 50px 0 50px 60px; /* Align with content */
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #444;
+            font-size: 0.8rem;
+            margin-top: 50px;
+        }
+
+        /* Responsive Story */
+        @media (max-width: 768px) {
+            /* General Mobile Adjustments */
+            section { padding: 60px 0; } /* Reduce section padding */
+            .hero-content h2 { font-size: 2.5rem; } /* Smaller Hero Title */
+            .section-header h4, .portfolio-section h4, .text-block h4, .process-block h4 { font-size: 2.5rem; }
+            
+            /* Layout Resets to Single Column */
+            .split-layout { grid-template-columns: 1fr; gap: 40px; }
+            .process-grid { grid-template-columns: 1fr; gap: 40px; }
+            .process-grid::before { display: none; } /* Hide horizontal line */
+            .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
+            .commitment-grid { grid-template-columns: 1fr; gap: 30px; }
+            /* Added: Force materials to single column to prevent overflow on small screens */
+            .material-grid { grid-template-columns: 1fr; gap: 30px; } 
+            
+            /* Navigation Stack & Toggle */
+            .site-header .container { 
+                flex-direction: row; 
+                flex-wrap: wrap; 
+                justify-content: space-between; /* Logo Left, Burger Right */
+                align-items: center;
+            }
+            
+            .logo { 
+                flex-direction: row; /* Keep logo horizontal to save height */
+                gap: 10px; 
+                text-align: left;
+            }
+            
+            .logo h1 { font-size: 1.2rem; } /* Slightly smaller text */
+            .logo-image { height: 40px; width: 40px; } /* Slightly smaller logo */
+
+            .mobile-menu-icon { 
+                display: block; 
+                cursor: pointer;
+                font-size: 1.5rem;
+                color: var(--primary-gold);
+                padding: 10px; /* larger touch target */
+            }
+
+            .main-nav {
+                width: 100%;
+                display: none; /* Hidden by default */
+                margin-top: 15px;
+                border-top: 1px solid rgba(255,255,255,0.05);
+            }
+            
+            .main-nav.active {
+                display: block; /* Show when active */
+                animation: fadeIn 0.3s ease;
+            }
+
+            .main-nav ul { 
+                flex-direction: column; 
+                gap: 20px; 
+                padding: 20px 0;
+                align-items: center;
+            }
+            
+            /* Story Page Mobile */
+            .story-hero h1 { font-size: 3rem; }
+            .chapter-year { font-size: 5rem; left: 0; top: -40px; }
+            .story-timeline-container { padding-left: 20px; border-left: none; margin-left: 0;}
+            .chapter-dot { display: none; } /* Hide dot on mobile for cleaner look */
+            .story-hero p.subtitle { margin-left: 0; border-left: none; padding-left: 0; margin-top: 10px;}
+            
+            /* CTA & Footer Mobile */
+            .cta-frame { padding: 40px 20px; }
+            .cta-section h3 { font-size: 2.2rem; }
+            .contact-details { flex-direction: column; gap: 10px; }
+            .contact-item::after { display: none; }
+            .social-icons-container { gap: 30px; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    
+    <script>
+        // Variables to store scroll position
+        let savedScrollPosition = 0;
+
+        function showStory() {
+            // 1. Save current scroll position before leaving Home
+            savedScrollPosition = window.scrollY;
+            
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('story-page').style.display = 'block';
+            window.scrollTo(0, 0); // Scroll Story page to top
+            
+            // Close mobile menu if open
+            const nav = document.querySelector('.main-nav');
+            if(nav) nav.classList.remove('active');
+        }
+
+        // Updated showHome function with optional restore parameter
+        function showHome(restoreScroll = false) {
+            document.getElementById('story-page').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            
+            if (restoreScroll) {
+                // 2. If 'Back' button clicked, restore position
+                window.scrollTo(0, savedScrollPosition);
+            } 
+            // If just navigating normally (e.g. clicking logo), we don't force scroll
+            
+            // Close mobile menu if open
+            const nav = document.querySelector('.main-nav');
+            if(nav) nav.classList.remove('active');
+        }
+
+        function toggleMobileMenu() {
+            const nav = document.querySelector('.main-nav');
+            nav.classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+
+    <!-- HEADER (Shared) -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo" onclick="showHome()">
+                <!-- Replace 'stonecraft-logo.png' with your actual logo file -->
+                <img src="Gemini_Generated_Image_mxanj9mxanj9mxan.png" alt="Textura Wallcraft Logo" class="logo-image">
+                <div class="logo-text">
+                    <h1>Textura Wallcraft <span>Studio</span></h1>
+                </div>
+            </div>
+
+            <div class="mobile-menu-icon" onclick="toggleMobileMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <!-- Regular Nav Links: Just show home (no forced restore), then scroll to section -->
+                    <li><a onclick="showHome(); document.getElementById('home').scrollIntoView();">Home</a></li>
+                    <li><a onclick="showHome(); document.getElementById('materials').scrollIntoView();">Materials</a></li>
+                    <li><a onclick="showHome(); document.getElementById('projects').scrollIntoView();">Projects</a></li>
+                    <li><a onclick="showHome(); document.getElementById('about').scrollIntoView();">About Us</a></li>
+                    <li><a onclick="showHome(); document.getElementById('contact').scrollIntoView();" class="btn-cta">Inquire</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- MAIN PAGE CONTENT -->
+    <main id="main-content">
+        <!-- HERO SECTION -->
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <h2>Redefining Surfaces with <br> Textural Elegance.</h2>
+                <p class="sub-text">Specialized in premium Suzuka® finishes. Crafted by master artisans.</p>
+                <div class="separator-line" style="margin-bottom: 40px;"></div>
+            </div>
+        </section>
+
+        <!-- INTRO -->
+        <section class="intro-section">
+            <div class="container">
+                <h3>Beyond Paint. It's Art.</h3>
+                <p>We transform ordinary walls into architectural statements. Bridging the gap between Malaysian craftsmanship and Singaporean design standards.</p>
+            </div>
+        </section>
+
+        <!-- MATERIALS -->
+        <section id="materials" class="materials-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Our Materials</span>
+                    <h4>Curated Textures</h4>
+                </div>
+                
+                <div class="material-grid">
+                    <!-- Material 1: Suzuka® Strato -->
+                    <div class="material-card">
+                        <div class="image-placeholder texture-1"></div>
+                        <div class="card-content">
+                            <h5>Suzuka® Strato</h5>
+                            <p>Contemporary textured paint series ranging from industrial cement to velvety satin. Defines modern interior elegance.</p>
+                        </div>
+                    </div>
+                    <!-- Material 2: Suzuka® Trowel Stone -->
+                    <div class="material-card">
+                        <div class="image-placeholder texture-2"></div>
+                        <div class="card-content">
+                            <h5>Suzuka® Trowel Stone</h5>
+                            <p>Natural pebble stone aggregate finish. Creates a rugged, organic surface with superior durability for exteriors.</p>
+                        </div>
+                    </div>
+                    <!-- Material 3: Suzuka® Kastone -->
+                    <div class="material-card">
+                        <div class="image-placeholder texture-3"></div>
+                        <div class="card-content">
+                            <h5>Suzuka® Kastone</h5>
+                            <p>Premium stone and brick veneers. Authentically replicates the timeless texture and depth of vintage masonry.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section id="projects" class="portfolio-section">
+            <div class="container">
+                <h4>Projects</h4>
+                <div class="gallery-grid">
+                    <div class="gallery-item" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=600&auto=format&fit=crop'); background-size: cover;">
+                        <span>Eco Botanic</span>
+                    </div>
+                    <div class="gallery-item" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop'); background-size: cover;">
+                        <span>Mount Austin</span>
+                    </div>
+                    <div class="gallery-item" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=600&auto=format&fit=crop'); background-size: cover;">
+                        <span>Horizon Hills</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT / LEGACY -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="split-layout">
+                    <div class="text-block">
+                        <span class="section-tag">The Artisan</span>
+                        <h4>The Art of Judgment.</h4>
+                        <p>Textura Wallcraft Studio is led by a master craftsman with decades of experience in the renovation industry.</p>
+                        
+                        <div class="pull-quote">
+                            "Years of experience teach you not just how to apply a material, but when to advise against it."
+                        </div>
+
+                        <p>We combine traditional hand-troweling expertise with a modern understanding of material science. We do not just apply stone; we protect the integrity of your architectural vision.</p>
+                        
+                        <!-- Link triggers JS function -->
+                        <a onclick="showStory()" class="read-story-link">Read Our Story</a>
+                    </div>
+                    <div class="image-block">
+                        <div class="real-img-placeholder"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMITMENT & PROCESS -->
+        <section class="trust-container">
+            <div class="container">
+                
+                <!-- Commitment -->
+                <div class="commitment-block">
+                    <div class="text-center">
+                        <span class="section-tag">Our Commitment</span>
+                    </div>
+                    
+                    <!-- New Premium Grid for Commitments -->
+                    <div class="commitment-grid">
+                        <div class="commitment-card">
+                            <span class="commitment-number">01</span>
+                            <div class="commitment-title">System Compliance</div>
+                            <div class="commitment-text">Strict adherence to manufacturer application specifications and system requirements.</div>
+                        </div>
+                        <div class="commitment-card">
+                            <span class="commitment-number">02</span>
+                            <div class="commitment-title">Substrate Control</div>
+                            <div class="commitment-text">Standardized procedures for substrate preparation, moisture testing, and curing control.</div>
+                        </div>
+                        <div class="commitment-card">
+                            <span class="commitment-number">03</span>
+                            <div class="commitment-title">Long-term Care</div>
+                            <div class="commitment-text">Post-completion guidance on long-term surface usage and maintenance.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process -->
+                <div class="process-block">
+                    <div class="text-center">
+                        <span class="section-tag">Our Process</span>
+                        <h4>A Controlled Approach</h4>
+                    </div>
+                    <div class="process-grid">
+                        <div class="process-step">
+                            <span class="step-number">I</span>
+                            <h5>Consult & Surface Review</h5>
+                            <p>We assess the space, lighting conditions, and substrate integrity before recommending a finish.</p>
+                        </div>
+                        <div class="process-step">
+                            <span class="step-number">II</span>
+                            <h5>Selection & Mock-up</h5>
+                            <p>Texture and color are finalized through physical samples to ensure the vision aligns with reality.</p>
+                        </div>
+                        <div class="process-step">
+                            <span class="step-number">III</span>
+                            <h5>Crafted Application</h5>
+                            <p>Hand-troweled application by skilled artisans, managed under strict timeline and quality controls.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA: THE INVITATION -->
+        <section id="contact" class="cta-section">
+            <div class="container">
+                <div class="cta-frame">
+                    <span class="cta-label">The Invitation</span>
+                    <h3>Experience the Texture.</h3>
+                    <p>Textures behave differently under real light. We invite you to a private consultation to see the samples and determine suitability for your space.</p>
+                    <a href="https://wa.me/601155009133?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20your%20premium%20wall%20finishes." class="btn-cta" style="margin-top: 20px;" target="_blank">Book Consultation</a>
+                    
+                    <div style="display:block;">
+                        <span class="scarcity-stamp">
+                            * We accept a limited number of commissions per month to ensure the quality of every finish.
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER (Centered Layout) -->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="footer-content">
+                    
+                    <!-- 1. TITLE -->
+                    <h5>Contact</h5>
+
+                    <!-- 2. INFO (Horizontal Row) -->
+                    <div class="contact-details">
+                        <span class="contact-item">
+                            <a href="mailto:beizuling@gmail.com">beizuling@gmail.com</a>
+                        </span>
+                        <span class="contact-item">MY: +60 11-5500 9133</span>
+                        <span class="contact-item">SG: +65 9897 1823</span>
+                    </div>
+
+                    <!-- 3. COLLAB NOTE -->
+                    <div class="collab-note">
+                        Collaborations with Architects & Interior Designers are welcome.
+                    </div>
+
+                    <!-- 4. SOCIAL ICONS (FontAwesome) -->
+                    <!-- 
+                        FIXED: Used FontAwesome icons to ensure they display correctly in preview.
+                        These vector icons are standard for web design and scale perfectly.
+                    -->
+                    <div class="social-icons-container">
+                        <a href="https://instagram.com" target="_blank" class="social-icon">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <!-- Generic 'Book' icon for XiaoHongShu as standard FA doesn't have it -->
+                        <a href="https://xiaohongshu.com" target="_blank" class="social-icon">
+                            <i class="fas fa-book-open"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="copyright">
+                    <p>&copy; 2026 Textura Wallcraft Studio Enterprise. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- STORY PAGE CONTENT (New Premium Layout) -->
+    <div id="story-page">
+        <div class="container">
+            <div class="story-header">
+                <span style="font-family:var(--font-heading); letter-spacing:1px; color:white;">Textura Wallcraft Studio</span>
+                <!-- IMPORTANT: Calling showHome(true) to restore scroll position -->
+                <a onclick="showHome(true)" class="back-link">← Back to Home</a>
+            </div>
+
+            <section class="story-hero">
+                <h1>From Hands to Home.</h1>
+                <p class="subtitle">The journey of mastering the imperfect wall.</p>
+            </section>
+
+            <div class="story-timeline-container">
+                
+                <!-- Chapter 1 -->
+                <div class="story-chapter">
+                    <div class="chapter-dot"></div>
+                    <div class="chapter-year">1992</div>
+                    <div class="chapter-content">
+                        <div class="chapter-title">The Origin</div>
+                        <p>It started over 30 years ago, not in a design studio, but on the dusty floors of renovation sites across Johor Bahru. Our founder began as a general contractor, learning the temperament of cement and the behavior of structures under the tropical sun.</p>
+                        <p>Back then, the goal was simple: finish the job. But he noticed that while many could build a wall, few could make it speak. He became obsessed with the final layer—the skin of the architecture.</p>
+                    </div>
+                </div>
+
+                <!-- Chapter 2 -->
+                <div class="story-chapter">
+                    <div class="chapter-dot"></div>
+                    <div class="chapter-year">2015</div>
+                    <div class="chapter-content">
+                        <div class="chapter-title">The Shift</div>
+                        <p>The transition to Suzuka® textures wasn't a business decision; it was a craftsman's choice. We realized that standard paint flatters nothing; it only covers. Texture, however, interacts with light. It changes from morning to evening.</p>
+                        
+                        <!-- Highlight Quote Block -->
+                        <div class="story-quote-box">
+                            <p>“We traded speed for precision, and volume for quality.”</p>
+                        </div>
+
+                        <p>We pivoted the entire company from general renovation to specialized surface design. It was a risk, but it attracted the kind of clients we wanted to serve: those who looked at a wall and saw a canvas.</p>
+                    </div>
+                </div>
+
+                <!-- Chapter 3 -->
+                <div class="story-chapter">
+                    <div class="chapter-dot"></div>
+                    <div class="chapter-year">NOW</div>
+                    <div class="chapter-content">
+                        <div class="chapter-title">The Philosophy of "No"</div>
+                        <p>Today, Textura Wallcraft Studio is known as much for what we refuse to do as for what we do. We believe that true professionalism includes the courage to say "no."</p>
+                        <p>We will not apply a finish if the substrate isn't ready. We will not recommend a texture if the lighting won't do it justice. We are not just installing a product; we are protecting the integrity of your home.</p>
+                    </div>
+                </div>
+                
+            </div>
+
+            <footer class="story-footer">
+                &copy; 2026 Textura Wallcraft Studio Enterprise.
+            </footer>
+        </div>
+    </div>
+
+</body>
+</html>
