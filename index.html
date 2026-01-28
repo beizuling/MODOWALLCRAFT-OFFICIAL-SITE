@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Textura Wallcraft Studio - Premium Wall Finishes & Texture Design.">
-    <title>Textura Wallcraft Studio | Artistry in Stone</title>
+    <meta name="description" content="MODO WALLCRAFT - Premium Wall Finishes & Texture Design.">
+    <title>MODO WALLCRAFT | EXCLUSIVE WALL FINISHING</title>
     
     <!-- Google Fonts for Premium Look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -76,30 +76,21 @@
 
         .text-center { text-align: center; }
 
+        /* SCROLL ANIMATION */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* =========================================
            3. COMPONENTS
            ========================================= */
-        .btn-primary {
-            display: inline-block;
-            background-color: transparent;
-            color: var(--primary-gold); 
-            padding: 12px 32px;
-            border-radius: 1px; 
-            font-weight: 400;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            border: 1px solid var(--primary-gold);
-            cursor: pointer;
-            font-size: 0.8rem;
-            margin-top: 10px;
-            transition: all 0.4s ease;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-gold);
-            color: var(--bg-dark); 
-        }
-
         .btn-cta {
             display: inline-block;
             background-color: var(--primary-gold); 
@@ -159,11 +150,36 @@
             letter-spacing: 1px;
         }
 
+        /* FLOATING WHATSAPP */
+        .float-whatsapp {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .float-whatsapp:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+        }
+
         /* =========================================
-           4. HEADER & NAV (FIXED)
+           4. HEADER & NAV (ARTISTIC TEXT LOGO)
            ========================================= */
         .site-header {
-            padding: 15px 0; 
+            padding: 20px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
             background-color: rgba(18, 18, 18, 0.98);
             position: fixed; 
@@ -175,49 +191,40 @@
             transition: all 0.3s ease;
         }
 
+        .site-header.scrolled {
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+
         .site-header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            cursor: pointer;
+        /* ARTISTIC TEXT LOGO STYLES */
+        .logo-text-link {
+            font-family: var(--font-heading);
+            font-size: 1.6rem; 
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px; 
+            text-decoration: none;
+            line-height: 1;
+            
+            background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent; 
+            
+            transition: opacity 0.3s ease;
         }
 
-        /* LOGO STYLE */
-        .logo-image {
-            height: 65px; 
-            width: auto;  
-            object-fit: contain; 
-            border-radius: 12px;
-            border: none; 
-            background-color: transparent; 
-            transition: transform 0.3s ease;
+        .logo-text-link:hover {
+            opacity: 0.9;
+            text-shadow: 0 0 15px rgba(191, 149, 63, 0.3);
         }
-
-        .logo:hover .logo-image {
-            transform: scale(1.03); 
-        }
-
-        .logo-text {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .logo h1 {
-            font-size: 1.4rem;
-            margin: 0;
-            letter-spacing: 2px;
-            color: var(--text-main);
-            font-weight: 400;
-            line-height: 1.1;
-        }
-        
-        .logo span { color: var(--primary-gold); }
 
         .main-nav ul { display: flex; gap: 40px; align-items: center; }
         .main-nav a { 
@@ -228,24 +235,23 @@
             font-weight: 400;
             opacity: 0.8;
             cursor: pointer;
+            transition: all 0.3s ease;
         }
         .main-nav a:hover { opacity: 1; color: var(--primary-gold); }
 
         .mobile-menu-icon { display: none; font-size: 1.5rem; color: var(--primary-gold); cursor: pointer;}
 
         /* =========================================
-           5. HERO SECTION & MAIN PADDING
+           5. HERO SECTION
            ========================================= */
-        
-        #main-content {
-            padding-top: 100px; 
-        }
+        #main-content { padding-top: 0; }
 
         .hero-section {
-            height: 85vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop'); 
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop'); 
             background-size: cover;
             background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -255,29 +261,23 @@
         .hero-content {
             max-width: 900px;
             padding: 0 20px;
-            animation: fadeIn 1.5s ease-out;
+            margin-top: 60px;
         }
 
         .hero-content h2 {
-            font-size: 3.8rem;
+            font-size: 4rem; 
             color: white; 
             margin-bottom: 20px;
             line-height: 1.1;
             font-weight: 400;
-        }
-
-        .sub-text {
-            color: #d0d0d0;
-            font-size: 1.15rem;
-            margin-bottom: 50px;
-            font-weight: 300;
-            letter-spacing: 0.5px;
+            letter-spacing: 2px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         /* =========================================
-           6. SECTIONS GENERAL
+           6. SECTIONS
            ========================================= */
-        section { padding: 100px 0; }
+        section { padding: 120px 0; }
 
         .intro-section {
             text-align: center;
@@ -287,7 +287,7 @@
         .intro-section h3 { font-size: 2.2rem; color: var(--text-main); font-style: italic;}
         .intro-section p { font-size: 1.05rem; color: var(--text-muted); margin-top: 20px;}
 
-        /* Materials Grid */
+        /* MATERIALS - 2 COLUMN FOCUS */
         .materials-section { background-color: var(--bg-card); }
         
         .section-header { margin-bottom: 60px; text-align: center;}
@@ -295,37 +295,50 @@
 
         .material-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
+            max-width: 900px; 
+            margin: 0 auto;
+        }
+
+        /* NEW: Material Link wrapper */
+        .material-card-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
         }
 
         .material-card {
             background: var(--bg-dark); 
             border: 1px solid #2a2a2a;
             transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%; /* Ensure uniform height */
         }
 
         .material-card:hover {
-            border-color: rgba(197, 157, 95, 0.3);
-            transform: translateY(-3px);
+            border-color: rgba(197, 157, 95, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        .image-placeholder {
+        /* NEW: Image Tag Styles */
+        .material-img {
             width: 100%;
-            height: 280px;
-            background-color: #252525;
-            position: relative;
+            height: 320px; 
+            object-fit: cover; /* Ensures image fills box without stretching */
+            display: block;
+            transition: transform 0.5s ease;
         }
+
+        .material-card:hover .material-img { transform: scale(1.03); }
         
-        .texture-1 { background: radial-gradient(circle, #333 10%, transparent 10%), #252525; background-size: 10px 10px; }
-        .texture-2 { background: linear-gradient(45deg, #333 25%, transparent 25%, transparent 75%, #333 75%), #252525; background-size: 20px 20px; }
-        .texture-3 { background: repeating-linear-gradient(90deg, #333, #333 1px, transparent 1px, transparent 10px), #252525; }
+        .card-content { padding: 40px 35px; position: relative; background: var(--bg-dark); z-index: 1;}
+        .material-card h5 { color: var(--text-main); font-size: 1.5rem; margin-bottom: 10px; letter-spacing: 1px;}
+        .material-card p { color: var(--text-muted); font-size: 1rem; margin: 0; }
 
-        .card-content { padding: 35px 30px; }
-        .material-card h5 { color: var(--text-main); font-size: 1.4rem; margin-bottom: 10px; letter-spacing: 1px;}
-        .material-card p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
-
-        /* Projects */
+        /* PROJECTS */
         .portfolio-section { background-color: var(--bg-dark); text-align: center;}
         .portfolio-section h4 { font-size: 3.5rem; color: var(--text-main); margin-bottom: 40px; }
 
@@ -337,7 +350,7 @@
         }
         
         .gallery-item {
-            height: 300px;
+            height: 400px; 
             background-color: #1a1a1a;
             display: flex;
             align-items: center;
@@ -348,13 +361,38 @@
             position: relative;
             background-size: cover;
             background-position: center;
-            opacity: 0.8;
-            transition: 0.5s;
+            overflow: hidden;
+            cursor: pointer;
         }
         
-        .gallery-item:hover { opacity: 1; z-index: 2; transform: scale(1.02); }
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.3);
+            transition: 0.4s ease;
+        }
 
-        /* About Split Layout */
+        .gallery-item:hover::before { background: rgba(0,0,0,0.7); }
+
+        .gallery-item span {
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: 0.4s ease;
+            border: 1px solid var(--primary-gold);
+            padding: 12px 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            background: rgba(0,0,0,0.5);
+            color: var(--primary-gold);
+        }
+
+        .gallery-item:hover span { opacity: 1; transform: translateY(0); }
+
+        /* ABOUT */
         .about-section { background-color: #141414; }
         
         .split-layout {
@@ -381,6 +419,7 @@
             height: 500px;
             background-color: #222;
             position: relative;
+            overflow: hidden;
         }
         
         .image-block .real-img-placeholder {
@@ -388,15 +427,18 @@
             height: 100%;
             background: url('https://images.unsplash.com/photo-1620615307704-47b64906612b?q=80&w=800&auto=format&fit=crop') center/cover;
             filter: grayscale(100%) contrast(1.1);
+            transition: transform 1s ease;
         }
+
+        .about-section:hover .real-img-placeholder { transform: scale(1.05); }
 
         /* COMMITMENT & PROCESS */
         .trust-container {
             background-color: var(--bg-section);
-            padding: 100px 0;
+            padding: 120px 0;
         }
 
-        .commitment-block { margin-bottom: 80px; }
+        .commitment-block { margin-bottom: 100px; }
         
         .commitment-grid {
             display: grid;
@@ -485,6 +527,12 @@
             border-radius: 50%;
             margin-bottom: 20px;
             background: var(--bg-section);
+            transition: all 0.3s;
+        }
+
+        .process-step:hover .step-number {
+            background-color: var(--primary-gold);
+            color: #000;
         }
 
         .process-step h5 {
@@ -502,7 +550,7 @@
             margin: 0 auto;
         }
 
-        /* CTA: THE INVITATION */
+        /* CTA */
         .cta-section {
             background-color: var(--bg-card); 
             background: linear-gradient(180deg, var(--bg-dark) 0%, #171717 100%);
@@ -572,7 +620,7 @@
             padding-top: 15px;
         }
 
-        /* FOOTER (Centered Single Column) */
+        /* FOOTER */
         .site-footer {
             background-color: #050505;
             padding: 100px 0;
@@ -583,10 +631,10 @@
         
         .footer-content {
             display: flex;
-            flex-direction: column; /* Vertical Stack */
-            align-items: center; /* Center horizontally */
-            text-align: center; /* Center text */
-            gap: 40px; /* Space between blocks */
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 40px;
         }
         
         .footer-col h5 { 
@@ -610,7 +658,6 @@
         
         .contact-item { white-space: nowrap; }
         
-        /* Gold Dot Separator */
         .contact-item::after {
             content: '•';
             color: var(--primary-gold);
@@ -630,20 +677,19 @@
         /* Social Icons */
         .social-icons-container {
             display: flex;
-            gap: 40px; /* Wider gap for premium feel */
+            gap: 40px;
             justify-content: center;
             align-items: center;
         }
 
-        /* UPDATED SOCIAL ICON CSS: No transform */
         .social-icon {
-            color: var(--primary-gold); /* Default Gold Color */
+            color: var(--primary-gold); 
             font-size: 1.5rem;
-            transition: opacity 0.4s ease; /* Only opacity change */
+            transition: opacity 0.4s ease;
         }
 
         .social-icon:hover {
-            opacity: 0.7; /* Slight fade on hover, NO MOVEMENT */
+            opacity: 0.7; 
         }
 
         .copyright {
@@ -657,20 +703,18 @@
         }
 
         /* =========================================
-           STORY PAGE STYLES (NEW PREMIUM LAYOUT)
+           STORY PAGE STYLES
            ========================================= */
         #story-page {
-            display: none; /* Hidden by default */
+            display: none; 
             animation: fadeIn 0.8s ease-out;
             background-color: var(--bg-dark);
             min-height: 100vh;
-            
-            /* KEY UPDATE: Ensure story page covers fixed header */
-            position: absolute; /* or fixed, depending on if you want story to scroll */
+            position: absolute; 
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 2000; /* Higher than header 1000 */
+            z-index: 2000;
         }
 
         .story-header {
@@ -693,17 +737,16 @@
         }
         .back-link:hover { color: var(--primary-gold); border-color: var(--primary-gold); }
 
-        /* Story Hero */
         .story-hero {
             padding: 100px 0 80px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Left align */
+            align-items: flex-start;
             position: relative;
         }
 
         .story-hero h1 {
-            font-size: 4.5rem; /* Larger Title */
+            font-size: 4.5rem; 
             margin-bottom: 20px;
             line-height: 1.1;
             color: var(--primary-gold);
@@ -722,11 +765,10 @@
             padding-left: 20px;
         }
 
-        /* Timeline Container */
         .story-timeline-container {
             position: relative;
-            padding-left: 40px; /* Space for the line */
-            border-left: 1px solid rgba(197, 157, 95, 0.3); /* The Golden Line */
+            padding-left: 40px; 
+            border-left: 1px solid rgba(197, 157, 95, 0.3); 
             margin-left: 20px;
         }
 
@@ -735,23 +777,21 @@
             position: relative;
         }
 
-        /* The Year Watermark */
         .chapter-year {
             position: absolute;
             top: -60px;
             left: -60px;
             font-family: var(--font-heading);
             font-size: 8rem;
-            color: rgba(255, 255, 255, 0.03); /* Subtle watermark */
+            color: rgba(255, 255, 255, 0.03); 
             z-index: 0;
             line-height: 1;
             font-weight: 700;
         }
 
-        /* Chapter Dot on Timeline */
         .chapter-dot {
             position: absolute;
-            left: -46px; /* Adjust based on container padding */
+            left: -46px; 
             top: 10px;
             width: 12px;
             height: 12px;
@@ -760,10 +800,7 @@
             border-radius: 50%;
         }
 
-        .chapter-content {
-            position: relative;
-            z-index: 1;
-        }
+        .chapter-content { position: relative; z-index: 1; }
 
         .chapter-title {
             font-size: 2rem;
@@ -776,11 +813,10 @@
             color: var(--text-muted);
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
-            text-align: left; /* Strict Left Alignment */
-            max-width: 650px; /* Optimal reading width */
+            text-align: left; 
+            max-width: 650px; 
         }
 
-        /* Highlight Quote Box */
         .story-quote-box {
             border: 1px solid rgba(197, 157, 95, 0.2);
             padding: 40px;
@@ -799,66 +835,62 @@
 
         .highlight { color: white; font-weight: 400; }
 
-        /* Footer inside Story */
         .story-footer {
             text-align: left;
-            padding: 50px 0 50px 60px; /* Align with content */
+            padding: 50px 0 50px 60px; 
             border-top: 1px solid rgba(255,255,255,0.05);
             color: #444;
             font-size: 0.8rem;
             margin-top: 50px;
         }
 
-        /* Responsive Story */
+        /* Responsive */
         @media (max-width: 768px) {
-            /* General Mobile Adjustments */
-            section { padding: 60px 0; } /* Reduce section padding */
-            .hero-content h2 { font-size: 2.5rem; } /* Smaller Hero Title */
+            section { padding: 60px 0; }
+            .hero-content h2 { font-size: 2.5rem; }
             .section-header h4, .portfolio-section h4, .text-block h4, .process-block h4 { font-size: 2.5rem; }
             
-            /* Layout Resets to Single Column */
             .split-layout { grid-template-columns: 1fr; gap: 40px; }
             .process-grid { grid-template-columns: 1fr; gap: 40px; }
-            .process-grid::before { display: none; } /* Hide horizontal line */
+            .process-grid::before { display: none; }
             .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
             .commitment-grid { grid-template-columns: 1fr; gap: 30px; }
-            /* Added: Force materials to single column to prevent overflow on small screens */
+            /* Mobile Materials Grid: Single Column */
             .material-grid { grid-template-columns: 1fr; gap: 30px; } 
             
-            /* Navigation Stack & Toggle */
             .site-header .container { 
                 flex-direction: row; 
                 flex-wrap: wrap; 
-                justify-content: space-between; /* Logo Left, Burger Right */
+                justify-content: space-between;
                 align-items: center;
             }
             
             .logo { 
-                flex-direction: row; /* Keep logo horizontal to save height */
+                flex-direction: row; 
                 gap: 10px; 
                 text-align: left;
             }
             
-            .logo h1 { font-size: 1.2rem; } /* Slightly smaller text */
-            .logo-image { height: 40px; width: 40px; } /* Slightly smaller logo */
+            .logo h1 { font-size: 1.2rem; }
+            /* Removed logo-image css as image tag is gone */
 
             .mobile-menu-icon { 
                 display: block; 
                 cursor: pointer;
                 font-size: 1.5rem;
                 color: var(--primary-gold);
-                padding: 10px; /* larger touch target */
+                padding: 10px;
             }
 
             .main-nav {
                 width: 100%;
-                display: none; /* Hidden by default */
+                display: none;
                 margin-top: 15px;
                 border-top: 1px solid rgba(255,255,255,0.05);
             }
             
             .main-nav.active {
-                display: block; /* Show when active */
+                display: block;
                 animation: fadeIn 0.3s ease;
             }
 
@@ -869,19 +901,20 @@
                 align-items: center;
             }
             
-            /* Story Page Mobile */
             .story-hero h1 { font-size: 3rem; }
             .chapter-year { font-size: 5rem; left: 0; top: -40px; }
             .story-timeline-container { padding-left: 20px; border-left: none; margin-left: 0;}
-            .chapter-dot { display: none; } /* Hide dot on mobile for cleaner look */
+            .chapter-dot { display: none; }
             .story-hero p.subtitle { margin-left: 0; border-left: none; padding-left: 0; margin-top: 10px;}
             
-            /* CTA & Footer Mobile */
             .cta-frame { padding: 40px 20px; }
             .cta-section h3 { font-size: 2.2rem; }
             .contact-details { flex-direction: column; gap: 10px; }
             .contact-item::after { display: none; }
             .social-icons-container { gap: 30px; }
+            
+            #main-content { padding-top: 80px; }
+            .float-whatsapp { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 24px;}
         }
         
         @keyframes fadeIn {
@@ -891,34 +924,25 @@
     </style>
     
     <script>
-        // Variables to store scroll position
         let savedScrollPosition = 0;
 
         function showStory() {
-            // 1. Save current scroll position before leaving Home
             savedScrollPosition = window.scrollY;
-            
             document.getElementById('main-content').style.display = 'none';
             document.getElementById('story-page').style.display = 'block';
-            window.scrollTo(0, 0); // Scroll Story page to top
-            
-            // Close mobile menu if open
+            window.scrollTo(0, 0); 
             const nav = document.querySelector('.main-nav');
             if(nav) nav.classList.remove('active');
         }
 
-        // Updated showHome function with optional restore parameter
         function showHome(restoreScroll = false) {
             document.getElementById('story-page').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
             
             if (restoreScroll) {
-                // 2. If 'Back' button clicked, restore position
                 window.scrollTo(0, savedScrollPosition);
             } 
-            // If just navigating normally (e.g. clicking logo), we don't force scroll
             
-            // Close mobile menu if open
             const nav = document.querySelector('.main-nav');
             if(nav) nav.classList.remove('active');
         }
@@ -927,19 +951,52 @@
             const nav = document.querySelector('.main-nav');
             nav.classList.toggle('active');
         }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = () => {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 100;
+                
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); 
+            
+            const header = document.querySelector('.site-header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
     </script>
 </head>
 <body>
 
-    <!-- HEADER (Shared) -->
+    <!-- NEW: FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/601155009133?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20your%20premium%20wall%20finishes." class="float-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- HEADER (Fixed) -->
     <header class="site-header">
         <div class="container">
             <div class="logo" onclick="showHome()">
-                <!-- Replace 'stonecraft-logo.png' with your actual logo file -->
-                <img src="Gemini_Generated_Image_mxanj9mxanj9mxan.png" alt="Textura Wallcraft Logo" class="logo-image">
-                <div class="logo-text">
-                    <h1>Textura Wallcraft <span>Studio</span></h1>
-                </div>
+                <!-- REPLACED IMAGE LOGO WITH ARTISTIC TEXT LOGO -->
+                <a href="#" class="logo-text-link" onclick="showHome(); return false;">
+                    MODO <span>WALLCRAFT</span>
+                </a>
             </div>
 
             <div class="mobile-menu-icon" onclick="toggleMobileMenu()">
@@ -947,7 +1004,6 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <!-- Regular Nav Links: Just show home (no forced restore), then scroll to section -->
                     <li><a onclick="showHome(); document.getElementById('home').scrollIntoView();">Home</a></li>
                     <li><a onclick="showHome(); document.getElementById('materials').scrollIntoView();">Materials</a></li>
                     <li><a onclick="showHome(); document.getElementById('projects').scrollIntoView();">Projects</a></li>
@@ -963,14 +1019,14 @@
         <!-- HERO SECTION -->
         <section id="home" class="hero-section">
             <div class="hero-content">
-                <h2>Redefining Surfaces with <br> Textural Elegance.</h2>
-                <p class="sub-text">Specialized in premium Suzuka® finishes. Crafted by master artisans.</p>
-                <div class="separator-line" style="margin-bottom: 40px;"></div>
+                <!-- Removed sub-text -->
+                <h2 class="reveal">Craft Your Signature Feature Wall.</h2>
+                <div class="separator-line reveal" style="margin-bottom: 40px;"></div>
             </div>
         </section>
 
         <!-- INTRO -->
-        <section class="intro-section">
+        <section class="intro-section reveal">
             <div class="container">
                 <h3>Beyond Paint. It's Art.</h3>
                 <p>We transform ordinary walls into architectural statements. Bridging the gap between Malaysian craftsmanship and Singaporean design standards.</p>
@@ -980,36 +1036,36 @@
         <!-- MATERIALS -->
         <section id="materials" class="materials-section">
             <div class="container">
-                <div class="section-header">
+                <div class="section-header reveal">
                     <span class="section-tag">Our Materials</span>
                     <h4>Curated Textures</h4>
                 </div>
                 
+                <!-- REMOVED KASTONE, ONLY 2 ITEMS NOW -->
                 <div class="material-grid">
                     <!-- Material 1: Suzuka® Strato -->
-                    <div class="material-card">
-                        <div class="image-placeholder texture-1"></div>
-                        <div class="card-content">
-                            <h5>Suzuka® Strato</h5>
-                            <p>Contemporary textured paint series ranging from industrial cement to velvety satin. Defines modern interior elegance.</p>
+                    <!-- Updated with Link -->
+                    <a href="strato.html" class="material-card-link reveal">
+                        <div class="material-card">
+                            <img src="strato.jpg" alt="Suzuka Strato" class="material-img">
+                            <div class="card-content">
+                                <h5>Suzuka® Strato</h5>
+                                <p>Contemporary textured paint series ranging from industrial cement to velvety satin. Defines modern interior elegance.</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
                     <!-- Material 2: Suzuka® Trowel Stone -->
-                    <div class="material-card">
-                        <div class="image-placeholder texture-2"></div>
-                        <div class="card-content">
-                            <h5>Suzuka® Trowel Stone</h5>
-                            <p>Natural pebble stone aggregate finish. Creates a rugged, organic surface with superior durability for exteriors.</p>
+                    <!-- Updated with Link -->
+                    <a href="trowel.html" class="material-card-link reveal">
+                        <div class="material-card">
+                            <img src="trowel.jpg" alt="Suzuka Trowel Stone" class="material-img">
+                            <div class="card-content">
+                                <h5>Suzuka® Trowel Stone</h5>
+                                <p>Natural pebble stone aggregate finish. Creates a rugged, organic surface with superior durability for exteriors.</p>
+                            </div>
                         </div>
-                    </div>
-                    <!-- Material 3: Suzuka® Kastone -->
-                    <div class="material-card">
-                        <div class="image-placeholder texture-3"></div>
-                        <div class="card-content">
-                            <h5>Suzuka® Kastone</h5>
-                            <p>Premium stone and brick veneers. Authentically replicates the timeless texture and depth of vintage masonry.</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
@@ -1017,15 +1073,16 @@
         <!-- PROJECTS -->
         <section id="projects" class="portfolio-section">
             <div class="container">
-                <h4>Projects</h4>
+                <h4 class="reveal">Projects</h4>
                 <div class="gallery-grid">
-                    <div class="gallery-item" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=600&auto=format&fit=crop'); background-size: cover;">
+                    <div class="gallery-item reveal" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=600&auto=format&fit=crop'); background-size: cover;">
+                        <!-- UPDATED LOCATION NAMES -->
                         <span>Eco Botanic</span>
                     </div>
-                    <div class="gallery-item" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop'); background-size: cover;">
+                    <div class="gallery-item reveal" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop'); background-size: cover;">
                         <span>Mount Austin</span>
                     </div>
-                    <div class="gallery-item" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=600&auto=format&fit=crop'); background-size: cover;">
+                    <div class="gallery-item reveal" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?q=80&w=600&auto=format&fit=crop'); background-size: cover;">
                         <span>Horizon Hills</span>
                     </div>
                 </div>
@@ -1036,21 +1093,31 @@
         <section id="about" class="about-section">
             <div class="container">
                 <div class="split-layout">
-                    <div class="text-block">
+                    <div class="text-block reveal">
                         <span class="section-tag">The Artisan</span>
-                        <h4>The Art of Judgment.</h4>
-                        <p>Textura Wallcraft Studio is led by a master craftsman with decades of experience in the renovation industry.</p>
                         
+                        <!-- Headline -->
+                        <h4>Honest Craftsmanship.</h4>
+                        
+                        <!-- Sub-headline (Styled for emphasis) -->
+                        <p style="font-size: 1.25rem; color: var(--text-main); margin-bottom: 1rem; font-weight: 400; letter-spacing: 0.5px;">
+                            Led by a Master, Guided by Integrity.
+                        </p>
+
+                        <!-- Body Text -->
+                        <p>MODO WALLCRAFT is built on over 30 years of hands-on experience. We are led by a master craftsman who has spent decades perfecting the touch of a trowel.</p>
+                        
+                        <!-- Quote -->
                         <div class="pull-quote">
-                            "Years of experience teach you not just how to apply a material, but when to advise against it."
+                            "True skill isn't just about knowing how to apply a texture—it's having the honesty to tell you what works, and what doesn't."
                         </div>
 
-                        <p>We combine traditional hand-troweling expertise with a modern understanding of material science. We do not just apply stone; we protect the integrity of your architectural vision.</p>
+                        <!-- Closing -->
+                        <p>We blend old-school dedication with modern style. We don't just cover a wall; we treat your home as if it were our own.</p>
                         
-                        <!-- Link triggers JS function -->
                         <a onclick="showStory()" class="read-story-link">Read Our Story</a>
                     </div>
-                    <div class="image-block">
+                    <div class="image-block reveal">
                         <div class="real-img-placeholder"></div>
                     </div>
                 </div>
@@ -1061,13 +1128,11 @@
         <section class="trust-container">
             <div class="container">
                 
-                <!-- Commitment -->
-                <div class="commitment-block">
+                <div class="commitment-block reveal">
                     <div class="text-center">
                         <span class="section-tag">Our Commitment</span>
                     </div>
                     
-                    <!-- New Premium Grid for Commitments -->
                     <div class="commitment-grid">
                         <div class="commitment-card">
                             <span class="commitment-number">01</span>
@@ -1087,8 +1152,7 @@
                     </div>
                 </div>
 
-                <!-- Process -->
-                <div class="process-block">
+                <div class="process-block reveal">
                     <div class="text-center">
                         <span class="section-tag">Our Process</span>
                         <h4>A Controlled Approach</h4>
@@ -1116,7 +1180,7 @@
         </section>
 
         <!-- CTA: THE INVITATION -->
-        <section id="contact" class="cta-section">
+        <section id="contact" class="cta-section reveal">
             <div class="container">
                 <div class="cta-frame">
                     <span class="cta-label">The Invitation</span>
@@ -1133,15 +1197,13 @@
             </div>
         </section>
 
-        <!-- FOOTER (Centered Layout) -->
+        <!-- FOOTER -->
         <footer class="site-footer">
             <div class="container">
                 <div class="footer-content">
                     
-                    <!-- 1. TITLE -->
                     <h5>Contact</h5>
 
-                    <!-- 2. INFO (Horizontal Row) -->
                     <div class="contact-details">
                         <span class="contact-item">
                             <a href="mailto:beizuling@gmail.com">beizuling@gmail.com</a>
@@ -1150,16 +1212,10 @@
                         <span class="contact-item">SG: +65 9897 1823</span>
                     </div>
 
-                    <!-- 3. COLLAB NOTE -->
                     <div class="collab-note">
                         Collaborations with Architects & Interior Designers are welcome.
                     </div>
 
-                    <!-- 4. SOCIAL ICONS (FontAwesome) -->
-                    <!-- 
-                        FIXED: Used FontAwesome icons to ensure they display correctly in preview.
-                        These vector icons are standard for web design and scale perfectly.
-                    -->
                     <div class="social-icons-container">
                         <a href="https://instagram.com" target="_blank" class="social-icon">
                             <i class="fab fa-instagram"></i>
@@ -1167,7 +1223,6 @@
                         <a href="https://facebook.com" target="_blank" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <!-- Generic 'Book' icon for XiaoHongShu as standard FA doesn't have it -->
                         <a href="https://xiaohongshu.com" target="_blank" class="social-icon">
                             <i class="fas fa-book-open"></i>
                         </a>
@@ -1176,18 +1231,17 @@
                 </div>
 
                 <div class="copyright">
-                    <p>&copy; 2026 Textura Wallcraft Studio Enterprise. All Rights Reserved.</p>
+                    <p>&copy; 2026 MODO WALLCRAFT Enterprise. All Rights Reserved.</p>
                 </div>
             </div>
         </footer>
     </main>
 
-    <!-- STORY PAGE CONTENT (New Premium Layout) -->
+    <!-- STORY PAGE CONTENT -->
     <div id="story-page">
         <div class="container">
             <div class="story-header">
-                <span style="font-family:var(--font-heading); letter-spacing:1px; color:white;">Textura Wallcraft Studio</span>
-                <!-- IMPORTANT: Calling showHome(true) to restore scroll position -->
+                <span style="font-family:var(--font-heading); letter-spacing:1px; color:white;">MODO WALLCRAFT</span>
                 <a onclick="showHome(true)" class="back-link">← Back to Home</a>
             </div>
 
@@ -1217,7 +1271,6 @@
                         <div class="chapter-title">The Shift</div>
                         <p>The transition to Suzuka® textures wasn't a business decision; it was a craftsman's choice. We realized that standard paint flatters nothing; it only covers. Texture, however, interacts with light. It changes from morning to evening.</p>
                         
-                        <!-- Highlight Quote Block -->
                         <div class="story-quote-box">
                             <p>“We traded speed for precision, and volume for quality.”</p>
                         </div>
@@ -1232,7 +1285,7 @@
                     <div class="chapter-year">NOW</div>
                     <div class="chapter-content">
                         <div class="chapter-title">The Philosophy of "No"</div>
-                        <p>Today, Textura Wallcraft Studio is known as much for what we refuse to do as for what we do. We believe that true professionalism includes the courage to say "no."</p>
+                        <p>Today, MODO WALLCRAFT is known as much for what we refuse to do as for what we do. We believe that true professionalism includes the courage to say "no."</p>
                         <p>We will not apply a finish if the substrate isn't ready. We will not recommend a texture if the lighting won't do it justice. We are not just installing a product; we are protecting the integrity of your home.</p>
                     </div>
                 </div>
@@ -1240,7 +1293,7 @@
             </div>
 
             <footer class="story-footer">
-                &copy; 2026 Textura Wallcraft Studio Enterprise.
+                &copy; 2026 MODO WALLCRAFT Enterprise.
             </footer>
         </div>
     </div>
