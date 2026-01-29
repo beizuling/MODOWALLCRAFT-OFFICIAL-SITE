@@ -16,22 +16,22 @@
 
     <style>
         /* =========================================
-           1. ROOT VARIABLES
+           1. ROOT VARIABLES (配色定义)
            ========================================= */
         :root {
-            --primary-gold: #C59D5F;
-            --gold-hover: #D4AF37;
-            --bg-dark: #121212;
-            --bg-card: #1C1C1C;
-            --bg-section: #181818;
-            --text-main: #E0E0E0;
-            --text-muted: #999999;
+            --primary-gold: #C59D5F;      /* Logo 里的金色 */
+            --gold-hover: #D4AF37;        /* 鼠标悬停时的亮金色 */
+            --bg-dark: #121212;           /* 深邃黑背景 */
+            --bg-card: #1C1C1C;           /* 卡片背景 */
+            --bg-section: #181818;        /* 板块交替色 */
+            --text-main: #E0E0E0;         /* 主要文字 */
+            --text-muted: #999999;        /* 次要文字 */
             --font-heading: 'Playfair Display', serif; 
             --font-body: 'Lato', sans-serif;           
         }
 
         /* =========================================
-           2. GLOBAL STYLES
+           2. GLOBAL STYLES (全局设置)
            ========================================= */
         html {
             scroll-behavior: smooth;
@@ -89,7 +89,7 @@
         }
 
         /* =========================================
-           3. COMPONENTS
+           3. COMPONENTS (组件)
            ========================================= */
         .btn-cta {
             display: inline-block;
@@ -176,10 +176,10 @@
         }
 
         /* =========================================
-           4. HEADER & NAV (ARTISTIC TEXT LOGO)
+           4. HEADER & NAV (FIXED)
            ========================================= */
         .site-header {
-            padding: 20px 0;
+            padding: 15px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
             background-color: rgba(18, 18, 18, 0.98);
             position: fixed; 
@@ -202,15 +202,51 @@
             align-items: center;
         }
 
-        /* ARTISTIC TEXT LOGO STYLES */
-        .logo-text-link {
-            font-family: var(--font-heading);
-            font-size: 1.6rem; 
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 3px; 
-            text-decoration: none;
-            line-height: 1;
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+        }
+
+        /* LOGO CROP & STYLE: Smart Badge Logic for 'logo.jpg' */
+        .logo-image {
+            height: 60px; 
+            width: 60px;  /* Square dimensions for circle */
+            border-radius: 50%; /* Force circle */
+            
+            /* CRITICAL CROP LOGIC: Focus on the "M" part */
+            object-fit: cover; 
+            /* 'center 35%' usually centers on the top symbol in a square logo with text at bottom */
+            object-position: center 35%; 
+            
+            /* BADGE STYLE: */
+            border: 2px solid var(--primary-gold); /* Gold border */
+            background-color: #000; 
+            
+            transition: all 0.4s ease;
+            /* Using slight filter to blend, removes harshness if any */
+            filter: contrast(1.1); 
+        }
+
+        /* Hover effect: Subtle Lift & Glow */
+        .logo:hover .logo-image {
+            box-shadow: 0 0 15px rgba(197, 157, 95, 0.4); /* Gold Glow */
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* UPDATED: LUXURY GOLD GRADIENT TEXT */
+        .logo h1 {
+            font-size: 1.5rem; 
+            margin: 0;
+            letter-spacing: 2px;
+            font-weight: 600; 
+            line-height: 1.1;
             
             background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
             -webkit-background-clip: text;
@@ -218,13 +254,10 @@
             background-clip: text;
             color: transparent; 
             
-            transition: opacity 0.3s ease;
+            text-shadow: 0 0 20px rgba(197, 157, 95, 0.15); 
         }
-
-        .logo-text-link:hover {
-            opacity: 0.9;
-            text-shadow: 0 0 15px rgba(191, 149, 63, 0.3);
-        }
+        
+        .logo span { color: var(--primary-gold); }
 
         .main-nav ul { display: flex; gap: 40px; align-items: center; }
         .main-nav a { 
@@ -275,10 +308,11 @@
         }
 
         /* =========================================
-           6. SECTIONS
+           6. SECTIONS GENERAL
            ========================================= */
-        section { padding: 120px 0; }
+        section { padding: 100px 0; }
 
+        /* Intro */
         .intro-section {
             text-align: center;
             max-width: 700px;
@@ -287,21 +321,21 @@
         .intro-section h3 { font-size: 2.2rem; color: var(--text-main); font-style: italic;}
         .intro-section p { font-size: 1.05rem; color: var(--text-muted); margin-top: 20px;}
 
-        /* MATERIALS - 2 COLUMN FOCUS */
+        /* Materials Grid */
         .materials-section { background-color: var(--bg-card); }
         
         .section-header { margin-bottom: 60px; text-align: center;}
+        
         .section-header h4 { font-size: 3.5rem; color: var(--text-main); margin: 0; }
 
         .material-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
             max-width: 900px; 
             margin: 0 auto;
         }
 
-        /* NEW: Material Link wrapper */
         .material-card-link {
             display: block;
             text-decoration: none;
@@ -314,31 +348,30 @@
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
-            height: 100%; /* Ensure uniform height */
+            height: 100%;
         }
 
         .material-card:hover {
-            border-color: rgba(197, 157, 95, 0.5);
-            transform: translateY(-5px);
+            border-color: rgba(197, 157, 95, 0.3);
+            transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-        /* NEW: Image Tag Styles */
         .material-img {
             width: 100%;
             height: 320px; 
-            object-fit: cover; /* Ensures image fills box without stretching */
+            object-fit: cover; 
             display: block;
             transition: transform 0.5s ease;
         }
 
         .material-card:hover .material-img { transform: scale(1.03); }
-        
-        .card-content { padding: 40px 35px; position: relative; background: var(--bg-dark); z-index: 1;}
-        .material-card h5 { color: var(--text-main); font-size: 1.5rem; margin-bottom: 10px; letter-spacing: 1px;}
-        .material-card p { color: var(--text-muted); font-size: 1rem; margin: 0; }
 
-        /* PROJECTS */
+        .card-content { padding: 35px 30px; }
+        .material-card h5 { color: var(--text-main); font-size: 1.4rem; margin-bottom: 10px; letter-spacing: 1px;}
+        .material-card p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+
+        /* Projects (Portfolio) */
         .portfolio-section { background-color: var(--bg-dark); text-align: center;}
         .portfolio-section h4 { font-size: 3.5rem; color: var(--text-main); margin-bottom: 40px; }
 
@@ -350,7 +383,7 @@
         }
         
         .gallery-item {
-            height: 400px; 
+            height: 300px;
             background-color: #1a1a1a;
             display: flex;
             align-items: center;
@@ -361,38 +394,13 @@
             position: relative;
             background-size: cover;
             background-position: center;
-            overflow: hidden;
-            cursor: pointer;
+            opacity: 0.8;
+            transition: 0.5s;
         }
         
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.3);
-            transition: 0.4s ease;
-        }
+        .gallery-item:hover { opacity: 1; z-index: 2; transform: scale(1.02); }
 
-        .gallery-item:hover::before { background: rgba(0,0,0,0.7); }
-
-        .gallery-item span {
-            position: relative;
-            z-index: 2;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: 0.4s ease;
-            border: 1px solid var(--primary-gold);
-            padding: 12px 25px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 0.9rem;
-            background: rgba(0,0,0,0.5);
-            color: var(--primary-gold);
-        }
-
-        .gallery-item:hover span { opacity: 1; transform: translateY(0); }
-
-        /* ABOUT */
+        /* About Split Layout */
         .about-section { background-color: #141414; }
         
         .split-layout {
@@ -422,23 +430,26 @@
             overflow: hidden;
         }
         
-        .image-block .real-img-placeholder {
+        /* UPDATED IMAGE BLOCK: REMOVED GRAYSCALE */
+        .about-image {
             width: 100%;
             height: 100%;
-            background: url('https://images.unsplash.com/photo-1620615307704-47b64906612b?q=80&w=800&auto=format&fit=crop') center/cover;
-            filter: grayscale(100%) contrast(1.1);
+            object-fit: cover;
+            /* No filter here, true color */
             transition: transform 1s ease;
         }
-
-        .about-section:hover .real-img-placeholder { transform: scale(1.05); }
+        
+        .about-section:hover .about-image {
+            transform: scale(1.05);
+        }
 
         /* COMMITMENT & PROCESS */
         .trust-container {
             background-color: var(--bg-section);
-            padding: 120px 0;
+            padding: 100px 0;
         }
 
-        .commitment-block { margin-bottom: 100px; }
+        .commitment-block { margin-bottom: 80px; }
         
         .commitment-grid {
             display: grid;
@@ -550,7 +561,7 @@
             margin: 0 auto;
         }
 
-        /* CTA */
+        /* CTA: THE INVITATION */
         .cta-section {
             background-color: var(--bg-card); 
             background: linear-gradient(180deg, var(--bg-dark) 0%, #171717 100%);
@@ -620,7 +631,7 @@
             padding-top: 15px;
         }
 
-        /* FOOTER */
+        /* FOOTER (Centered Single Column) */
         .site-footer {
             background-color: #050505;
             padding: 100px 0;
@@ -631,10 +642,10 @@
         
         .footer-content {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            gap: 40px;
+            flex-direction: column; /* Vertical Stack */
+            align-items: center; /* Center horizontally */
+            text-align: center; /* Center text */
+            gap: 40px; /* Space between blocks */
         }
         
         .footer-col h5 { 
@@ -658,6 +669,7 @@
         
         .contact-item { white-space: nowrap; }
         
+        /* Gold Dot Separator */
         .contact-item::after {
             content: '•';
             color: var(--primary-gold);
@@ -677,19 +689,20 @@
         /* Social Icons */
         .social-icons-container {
             display: flex;
-            gap: 40px;
+            gap: 40px; /* Wider gap for premium feel */
             justify-content: center;
             align-items: center;
         }
 
+        /* UPDATED SOCIAL ICON CSS: No transform */
         .social-icon {
-            color: var(--primary-gold); 
+            color: var(--primary-gold); /* Default Gold Color */
             font-size: 1.5rem;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.4s ease; /* Only opacity change */
         }
 
         .social-icon:hover {
-            opacity: 0.7; 
+            opacity: 0.7; /* Slight fade on hover, NO MOVEMENT */
         }
 
         .copyright {
@@ -703,18 +716,20 @@
         }
 
         /* =========================================
-           STORY PAGE STYLES
+           STORY PAGE STYLES (NEW PREMIUM LAYOUT)
            ========================================= */
         #story-page {
-            display: none; 
+            display: none; /* Hidden by default */
             animation: fadeIn 0.8s ease-out;
             background-color: var(--bg-dark);
             min-height: 100vh;
-            position: absolute; 
+            
+            /* KEY UPDATE: Ensure story page covers fixed header */
+            position: absolute; /* or fixed, depending on if you want story to scroll */
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 2000;
+            z-index: 2000; /* Higher than header 1000 */
         }
 
         .story-header {
@@ -737,16 +752,17 @@
         }
         .back-link:hover { color: var(--primary-gold); border-color: var(--primary-gold); }
 
+        /* Story Hero */
         .story-hero {
             padding: 100px 0 80px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: flex-start; /* Left align */
             position: relative;
         }
 
         .story-hero h1 {
-            font-size: 4.5rem; 
+            font-size: 4.5rem; /* Larger Title */
             margin-bottom: 20px;
             line-height: 1.1;
             color: var(--primary-gold);
@@ -765,10 +781,11 @@
             padding-left: 20px;
         }
 
+        /* Timeline Container */
         .story-timeline-container {
             position: relative;
-            padding-left: 40px; 
-            border-left: 1px solid rgba(197, 157, 95, 0.3); 
+            padding-left: 40px; /* Space for the line */
+            border-left: 1px solid rgba(197, 157, 95, 0.3); /* The Golden Line */
             margin-left: 20px;
         }
 
@@ -777,21 +794,23 @@
             position: relative;
         }
 
+        /* The Year Watermark */
         .chapter-year {
             position: absolute;
             top: -60px;
             left: -60px;
             font-family: var(--font-heading);
             font-size: 8rem;
-            color: rgba(255, 255, 255, 0.03); 
+            color: rgba(255, 255, 255, 0.03); /* Subtle watermark */
             z-index: 0;
             line-height: 1;
             font-weight: 700;
         }
 
+        /* Chapter Dot on Timeline */
         .chapter-dot {
             position: absolute;
-            left: -46px; 
+            left: -46px; /* Adjust based on container padding */
             top: 10px;
             width: 12px;
             height: 12px;
@@ -800,7 +819,10 @@
             border-radius: 50%;
         }
 
-        .chapter-content { position: relative; z-index: 1; }
+        .chapter-content {
+            position: relative;
+            z-index: 1;
+        }
 
         .chapter-title {
             font-size: 2rem;
@@ -813,10 +835,11 @@
             color: var(--text-muted);
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
-            text-align: left; 
-            max-width: 650px; 
+            text-align: left; /* Strict Left Alignment */
+            max-width: 650px; /* Optimal reading width */
         }
 
+        /* Highlight Quote Box */
         .story-quote-box {
             border: 1px solid rgba(197, 157, 95, 0.2);
             padding: 40px;
@@ -835,62 +858,66 @@
 
         .highlight { color: white; font-weight: 400; }
 
+        /* Footer inside Story */
         .story-footer {
             text-align: left;
-            padding: 50px 0 50px 60px; 
+            padding: 50px 0 50px 60px; /* Align with content */
             border-top: 1px solid rgba(255,255,255,0.05);
             color: #444;
             font-size: 0.8rem;
             margin-top: 50px;
         }
 
-        /* Responsive */
+        /* Responsive Story */
         @media (max-width: 768px) {
-            section { padding: 60px 0; }
-            .hero-content h2 { font-size: 2.5rem; }
+            /* General Mobile Adjustments */
+            section { padding: 60px 0; } /* Reduce section padding */
+            .hero-content h2 { font-size: 2.5rem; } /* Smaller Hero Title */
             .section-header h4, .portfolio-section h4, .text-block h4, .process-block h4 { font-size: 2.5rem; }
             
+            /* Layout Resets to Single Column */
             .split-layout { grid-template-columns: 1fr; gap: 40px; }
             .process-grid { grid-template-columns: 1fr; gap: 40px; }
-            .process-grid::before { display: none; }
+            .process-grid::before { display: none; } /* Hide horizontal line */
             .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
             .commitment-grid { grid-template-columns: 1fr; gap: 30px; }
-            /* Mobile Materials Grid: Single Column */
+            /* Added: Force materials to single column to prevent overflow on small screens */
             .material-grid { grid-template-columns: 1fr; gap: 30px; } 
             
+            /* Navigation Stack & Toggle */
             .site-header .container { 
                 flex-direction: row; 
                 flex-wrap: wrap; 
-                justify-content: space-between;
+                justify-content: space-between; /* Logo Left, Burger Right */
                 align-items: center;
             }
             
             .logo { 
-                flex-direction: row; 
+                flex-direction: row; /* Keep logo horizontal to save height */
                 gap: 10px; 
                 text-align: left;
             }
             
-            .logo h1 { font-size: 1.2rem; }
-            /* Removed logo-image css as image tag is gone */
+            .logo h1 { font-size: 1.2rem; } /* Slightly smaller text */
+            .logo-image { height: 40px; width: 40px; border-radius: 8px; /* Slightly adjusted for mobile if needed */ }
 
             .mobile-menu-icon { 
                 display: block; 
                 cursor: pointer;
                 font-size: 1.5rem;
                 color: var(--primary-gold);
-                padding: 10px;
+                padding: 10px; /* larger touch target */
             }
 
             .main-nav {
                 width: 100%;
-                display: none;
+                display: none; /* Hidden by default */
                 margin-top: 15px;
                 border-top: 1px solid rgba(255,255,255,0.05);
             }
             
             .main-nav.active {
-                display: block;
+                display: block; /* Show when active */
                 animation: fadeIn 0.3s ease;
             }
 
@@ -901,18 +928,21 @@
                 align-items: center;
             }
             
+            /* Story Page Mobile */
             .story-hero h1 { font-size: 3rem; }
             .chapter-year { font-size: 5rem; left: 0; top: -40px; }
             .story-timeline-container { padding-left: 20px; border-left: none; margin-left: 0;}
-            .chapter-dot { display: none; }
+            .chapter-dot { display: none; } /* Hide dot on mobile for cleaner look */
             .story-hero p.subtitle { margin-left: 0; border-left: none; padding-left: 0; margin-top: 10px;}
             
+            /* CTA & Footer Mobile */
             .cta-frame { padding: 40px 20px; }
             .cta-section h3 { font-size: 2.2rem; }
             .contact-details { flex-direction: column; gap: 10px; }
             .contact-item::after { display: none; }
             .social-icons-container { gap: 30px; }
             
+            /* Add space to top for mobile due to fixed header */
             #main-content { padding-top: 80px; }
             .float-whatsapp { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 24px;}
         }
@@ -924,25 +954,34 @@
     </style>
     
     <script>
+        // Variables to store scroll position
         let savedScrollPosition = 0;
 
         function showStory() {
+            // 1. Save current scroll position before leaving Home
             savedScrollPosition = window.scrollY;
+            
             document.getElementById('main-content').style.display = 'none';
             document.getElementById('story-page').style.display = 'block';
-            window.scrollTo(0, 0); 
+            window.scrollTo(0, 0); // Scroll Story page to top
+            
+            // Close mobile menu if open
             const nav = document.querySelector('.main-nav');
             if(nav) nav.classList.remove('active');
         }
 
+        // Updated showHome function with optional restore parameter
         function showHome(restoreScroll = false) {
             document.getElementById('story-page').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
             
             if (restoreScroll) {
+                // 2. If 'Back' button clicked, restore position
                 window.scrollTo(0, savedScrollPosition);
             } 
+            // If just navigating normally (e.g. clicking logo), we don't force scroll
             
+            // Close mobile menu if open
             const nav = document.querySelector('.main-nav');
             if(nav) nav.classList.remove('active');
         }
@@ -968,8 +1007,10 @@
             }
             
             window.addEventListener('scroll', revealOnScroll);
+            // Trigger once on load
             revealOnScroll(); 
             
+            // 2. Dynamic Header Background
             const header = document.querySelector('.site-header');
             
             window.addEventListener('scroll', () => {
@@ -993,10 +1034,11 @@
     <header class="site-header">
         <div class="container">
             <div class="logo" onclick="showHome()">
-                <!-- REPLACED IMAGE LOGO WITH ARTISTIC TEXT LOGO -->
-                <a href="#" class="logo-text-link" onclick="showHome(); return false;">
-                    MODO <span>WALLCRAFT</span>
-                </a>
+                <!-- UPDATED SRC: Using the new logo file -->
+                <img src="logo.jpg" alt="MODO WALLCRAFT Logo" class="logo-image">
+                <div class="logo-text">
+                    <h1>MODO WALLCRAFT</h1>
+                </div>
             </div>
 
             <div class="mobile-menu-icon" onclick="toggleMobileMenu()">
@@ -1004,6 +1046,7 @@
             </div>
             <nav class="main-nav">
                 <ul>
+                    <!-- Regular Nav Links: Just show home (no forced restore), then scroll to section -->
                     <li><a onclick="showHome(); document.getElementById('home').scrollIntoView();">Home</a></li>
                     <li><a onclick="showHome(); document.getElementById('materials').scrollIntoView();">Materials</a></li>
                     <li><a onclick="showHome(); document.getElementById('projects').scrollIntoView();">Projects</a></li>
@@ -1019,7 +1062,7 @@
         <!-- HERO SECTION -->
         <section id="home" class="hero-section">
             <div class="hero-content">
-                <!-- Removed sub-text -->
+                <!-- Added reveal class -->
                 <h2 class="reveal">Craft Your Signature Feature Wall.</h2>
                 <div class="separator-line reveal" style="margin-bottom: 40px;"></div>
             </div>
@@ -1041,10 +1084,9 @@
                     <h4>Curated Textures</h4>
                 </div>
                 
-                <!-- REMOVED KASTONE, ONLY 2 ITEMS NOW -->
+                <!-- GRID UPDATED: Added AI Tool as 3rd Item -->
                 <div class="material-grid">
                     <!-- Material 1: Suzuka® Strato -->
-                    <!-- Updated with Link -->
                     <a href="strato.html" class="material-card-link reveal">
                         <div class="material-card">
                             <img src="strato.jpg" alt="Suzuka Strato" class="material-img">
@@ -1056,13 +1098,27 @@
                     </a>
 
                     <!-- Material 2: Suzuka® Trowel Stone -->
-                    <!-- Updated with Link -->
                     <a href="trowel.html" class="material-card-link reveal">
                         <div class="material-card">
                             <img src="trowel.jpg" alt="Suzuka Trowel Stone" class="material-img">
                             <div class="card-content">
                                 <h5>Suzuka® Trowel Stone</h5>
                                 <p>Natural pebble stone aggregate finish. Creates a rugged, organic surface with superior durability for exteriors.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- NEW: AI VISUALIZER TOOL CARD -->
+                    <a href="ai_tool.html" class="material-card-link reveal">
+                        <div class="material-card ai-tool-card" style="border-color: var(--primary-gold);">
+                            <!-- Using a gradient overlay/icon instead of a static image for tech feel -->
+                            <div class="image-placeholder" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:15px;">
+                                <i class="fas fa-wand-magic-sparkles" style="font-size: 3rem; color: var(--primary-gold); text-shadow: 0 0 15px rgba(197, 157, 95, 0.6);"></i>
+                                <span style="color:white; font-family:var(--font-heading); letter-spacing:2px; font-size:0.9rem;">TRY IT NOW</span>
+                            </div>
+                            <div class="card-content" style="background: linear-gradient(to top, rgba(197, 157, 95, 0.1), transparent);">
+                                <h5 style="color: var(--primary-gold);">AI Wall Visualizer</h5>
+                                <p>Not sure which texture fits? Take a photo of your wall and let our AI show you the finished look instantly.</p>
                             </div>
                         </div>
                     </a>
@@ -1118,7 +1174,8 @@
                         <a onclick="showStory()" class="read-story-link">Read Our Story</a>
                     </div>
                     <div class="image-block reveal">
-                        <div class="real-img-placeholder"></div>
+                        <!-- Updated to use img tag for easier replacement -->
+                        <img src="Artisan.jpg" alt="MODO Wallcraft Artisan" class="about-image">
                     </div>
                 </div>
             </div>
@@ -1197,13 +1254,15 @@
             </div>
         </section>
 
-        <!-- FOOTER -->
+        <!-- FOOTER (Centered Layout) -->
         <footer class="site-footer">
             <div class="container">
                 <div class="footer-content">
                     
+                    <!-- 1. TITLE -->
                     <h5>Contact</h5>
 
+                    <!-- 2. INFO (Horizontal Row) -->
                     <div class="contact-details">
                         <span class="contact-item">
                             <a href="mailto:beizuling@gmail.com">beizuling@gmail.com</a>
@@ -1212,10 +1271,16 @@
                         <span class="contact-item">SG: +65 9897 1823</span>
                     </div>
 
+                    <!-- 3. COLLAB NOTE -->
                     <div class="collab-note">
                         Collaborations with Architects & Interior Designers are welcome.
                     </div>
 
+                    <!-- 4. SOCIAL ICONS (FontAwesome) -->
+                    <!-- 
+                        FIXED: Used FontAwesome icons to ensure they display correctly in preview.
+                        These vector icons are standard for web design and scale perfectly.
+                    -->
                     <div class="social-icons-container">
                         <a href="https://instagram.com" target="_blank" class="social-icon">
                             <i class="fab fa-instagram"></i>
@@ -1223,6 +1288,7 @@
                         <a href="https://facebook.com" target="_blank" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
                         </a>
+                        <!-- Generic 'Book' icon for XiaoHongShu as standard FA doesn't have it -->
                         <a href="https://xiaohongshu.com" target="_blank" class="social-icon">
                             <i class="fas fa-book-open"></i>
                         </a>
@@ -1237,11 +1303,12 @@
         </footer>
     </main>
 
-    <!-- STORY PAGE CONTENT -->
+    <!-- STORY PAGE CONTENT (New Premium Layout) -->
     <div id="story-page">
         <div class="container">
             <div class="story-header">
                 <span style="font-family:var(--font-heading); letter-spacing:1px; color:white;">MODO WALLCRAFT</span>
+                <!-- IMPORTANT: Calling showHome(true) to restore scroll position -->
                 <a onclick="showHome(true)" class="back-link">← Back to Home</a>
             </div>
 
@@ -1271,6 +1338,7 @@
                         <div class="chapter-title">The Shift</div>
                         <p>The transition to Suzuka® textures wasn't a business decision; it was a craftsman's choice. We realized that standard paint flatters nothing; it only covers. Texture, however, interacts with light. It changes from morning to evening.</p>
                         
+                        <!-- Highlight Quote Block -->
                         <div class="story-quote-box">
                             <p>“We traded speed for precision, and volume for quality.”</p>
                         </div>
