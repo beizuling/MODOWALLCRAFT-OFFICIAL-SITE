@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="MODO WALLCRAFT - AI Wall Visualizer Tool.">
+    <title>AI Wall Visualizer | MODO WALLCRAFT</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-gold: #C59D5F;
+            --bg-dark: #121212;
+            --text-main: #E0E0E0;
+            --font-heading: 'Playfair Display', serif; 
+            --font-body: 'Lato', sans-serif;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* App-like feel */
+        }
+
+        /* HEADER */
+        .app-header {
+            padding: 15px 20px;
+            background: rgba(18, 18, 18, 0.95);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .back-btn {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .app-title {
+            font-family: var(--font-heading);
+            color: var(--primary-gold);
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+
+        /* MAIN CANVAS AREA */
+        .visualizer-stage {
+            flex: 1;
+            position: relative;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #user-image {
+            max-width: 100%;
+            max-height: 100%;
+            display: none; /* Hidden until upload */
+            position: relative;
+            z-index: 1;
+        }
+
+        #texture-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; /* Tiled texture */
+            opacity: 0; /* Hidden by default */
+            z-index: 2;
+            mix-blend-mode: multiply; /* The Magic: Blends texture into the photo */
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        .empty-state i { font-size: 3rem; margin-bottom: 15px; color: #333; }
+
+        /* CONTROLS (Bottom Sheet) */
+        .controls-panel {
+            background: #1a1a1a;
+            padding: 20px;
+            border-top: 1px solid rgba(197, 157, 95, 0.3);
+            z-index: 100;
+        }
+
+        /* Upload Button */
+        .upload-btn-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .btn-upload {
+            border: 1px dashed var(--primary-gold);
+            color: var(--primary-gold);
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            width: 100%;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-upload:hover { background: rgba(197,157,95,0.1); }
+
+        .upload-btn-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        /* Texture Slider */
+        .texture-selector {
+            display: flex;
+            gap: 15px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            opacity: 0.5; /* Disabled look until image uploaded */
+            pointer-events: none;
+            transition: 0.3s;
+        }
+
+        .texture-selector.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .texture-option {
+            min-width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            border: 2px solid #333;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .texture-option.selected {
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 10px rgba(197,157,95,0.4);
+        }
+
+        .texture-label {
+            position: absolute;
+            bottom: -25px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #ccc;
+        }
+
+        /* Loader */
+        .loader {
+            display: none;
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+        .spinner {
+            width: 40px; height: 40px;
+            border: 4px solid rgba(197,157,95,0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-gold);
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="index.html" class="back-btn"><i class="fas fa-chevron-left"></i> Back</a>
+        <span class="app-title">MODO AI Visualizer</span>
+        <i class="fas fa-info-circle" style="color:#666;" onclick="alert('This tool simulates texture application. Actual results may vary based on lighting.')"></i>
+    </header>
+
+    <div class="visualizer-stage" id="stage">
+        <div class="empty-state" id="empty-msg">
+            <i class="fas fa-camera"></i>
+            <h3>Upload Your Wall</h3>
+            <p>Take a photo or upload an image to start visualizing.</p>
+        </div>
+        
+        <img id="user-image" alt="User Wall">
+        <div id="texture-overlay"></div>
+        <div class="loader" id="loader"><div class="spinner"></div></div>
+    </div>
+
+    <div class="controls-panel">
+        
+        <div class="upload-btn-wrapper">
+            <button class="btn-upload"><i class="fas fa-camera"></i> Capture / Upload Wall</button>
+            <input type="file" id="imageInput" accept="image/*">
+        </div>
+
+        <div class="texture-selector" id="textureList">
+            <!-- Strato Option -->
+            <div class="texture-option" data-texture="strato.jpg" style="background-image: url('strato.jpg');" onclick="applyTexture(this)">
+                <span class="texture-label">Strato</span>
+            </div>
+            
+            <!-- Trowel Option -->
+            <div class="texture-option" data-texture="trowel.jpg" style="background-image: url('trowel.jpg');" onclick="applyTexture(this)">
+                <span class="texture-label">Trowel</span>
+            </div>
+            
+            <!-- Clear Option -->
+            <div class="texture-option" style="background-color: #333; display:flex; align-items:center; justify-content:center;" onclick="clearTexture(this)">
+                <i class="fas fa-ban" style="color:#666;"></i>
+                <span class="texture-label">None</span>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const userImage = document.getElementById('user-image');
+        const emptyMsg = document.getElementById('empty-msg');
+        const textureList = document.getElementById('textureList');
+        const overlay = document.getElementById('texture-overlay');
+        const loader = document.getElementById('loader');
+
+        // Handle Image Upload
+        imageInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                
+                reader.onload = function(event) {
+                    userImage.src = event.target.result;
+                    userImage.style.display = 'block';
+                    emptyMsg.style.display = 'none';
+                    textureList.classList.add('active'); // Enable texture selection
+                    
+                    // Reset texture
+                    overlay.style.opacity = '0';
+                    document.querySelectorAll('.texture-option').forEach(el => el.classList.remove('selected'));
+                }
+                
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Apply Texture Logic
+        function applyTexture(element) {
+            // UI Feedback
+            document.querySelectorAll('.texture-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            
+            // Simulating AI Processing
+            loader.style.display = 'block';
+            
+            setTimeout(() => {
+                const textureUrl = element.getAttribute('data-texture');
+                
+                // Apply texture as a semi-transparent overlay pattern
+                overlay.style.backgroundImage = `url('${textureUrl}')`;
+                overlay.style.opacity = '0.5'; // 50% opacity to blend with wall
+                
+                // You can adjust blend mode dynamically if needed
+                // overlay.style.mixBlendMode = 'multiply'; 
+                
+                loader.style.display = 'none';
+            }, 800); // Fake 800ms delay for "processing" feel
+        }
+
+        function clearTexture(element) {
+            document.querySelectorAll('.texture-option').forEach(el => el.classList.remove('selected'));
+            element.classList.add('selected');
+            overlay.style.opacity = '0';
+        }
+    </script>
+
+</body>
+</html>
