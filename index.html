@@ -214,24 +214,16 @@
             height: 60px; 
             width: 60px;  /* Square dimensions for circle */
             border-radius: 50%; /* Force circle */
-            
-            /* CRITICAL CROP LOGIC: Focus on the "M" part */
             object-fit: cover; 
-            /* 'center 35%' usually centers on the top symbol in a square logo with text at bottom */
             object-position: center 35%; 
-            
-            /* BADGE STYLE: */
             border: 2px solid var(--primary-gold); /* Gold border */
             background-color: #000; 
-            
             transition: all 0.4s ease;
-            /* Using slight filter to blend, removes harshness if any */
             filter: contrast(1.1); 
         }
 
-        /* Hover effect: Subtle Lift & Glow */
         .logo:hover .logo-image {
-            box-shadow: 0 0 15px rgba(197, 157, 95, 0.4); /* Gold Glow */
+            box-shadow: 0 0 15px rgba(197, 157, 95, 0.4);
             transform: scale(1.05);
         }
 
@@ -240,20 +232,17 @@
             flex-direction: column;
         }
 
-        /* UPDATED: LUXURY GOLD GRADIENT TEXT */
         .logo h1 {
             font-size: 1.5rem; 
             margin: 0;
             letter-spacing: 2px;
             font-weight: 600; 
             line-height: 1.1;
-            
             background: linear-gradient(90deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             color: transparent; 
-            
             text-shadow: 0 0 20px rgba(197, 157, 95, 0.15); 
         }
         
@@ -321,18 +310,17 @@
         .intro-section h3 { font-size: 2.2rem; color: var(--text-main); font-style: italic;}
         .intro-section p { font-size: 1.05rem; color: var(--text-muted); margin-top: 20px;}
 
-        /* Materials Grid */
+        /* Materials Grid - Optimized for 5 Cards */
         .materials-section { background-color: var(--bg-card); }
         
         .section-header { margin-bottom: 60px; text-align: center;}
-        
         .section-header h4 { font-size: 3.5rem; color: var(--text-main); margin: 0; }
 
         .material-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 40px;
-            max-width: 900px; 
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+            gap: 30px;
+            max-width: 1100px; 
             margin: 0 auto;
         }
 
@@ -349,27 +337,46 @@
             position: relative;
             overflow: hidden;
             height: 100%;
+            display: flex;
+            flex-direction: column;
+            border-radius: 2px;
         }
 
         .material-card:hover {
-            border-color: rgba(197, 157, 95, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-color: rgba(197, 157, 95, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.5), 0 0 15px rgba(197,157,95,0.15);
         }
 
         .material-img {
             width: 100%;
-            height: 320px; 
+            height: 250px; 
             object-fit: cover; 
             display: block;
             transition: transform 0.5s ease;
         }
 
-        .material-card:hover .material-img { transform: scale(1.03); }
+        .material-card:hover .material-img { transform: scale(1.04); }
 
-        .card-content { padding: 35px 30px; }
-        .material-card h5 { color: var(--text-main); font-size: 1.4rem; margin-bottom: 10px; letter-spacing: 1px;}
-        .material-card p { color: var(--text-muted); font-size: 0.95rem; margin: 0; }
+        .card-content { 
+            padding: 30px 25px; 
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .material-card h5 { color: var(--text-main); font-size: 1.35rem; margin-bottom: 12px; letter-spacing: 1px;}
+        .material-card p { color: var(--text-muted); font-size: 0.92rem; margin: 0; line-height: 1.6; }
+
+        .card-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-gold);
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
 
         /* Projects (Portfolio) */
         .portfolio-section { background-color: var(--bg-dark); text-align: center;}
@@ -430,12 +437,10 @@
             overflow: hidden;
         }
         
-        /* UPDATED IMAGE BLOCK: REMOVED GRAYSCALE */
         .about-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            /* No filter here, true color */
             transition: transform 1s ease;
         }
         
@@ -642,10 +647,10 @@
         
         .footer-content {
             display: flex;
-            flex-direction: column; /* Vertical Stack */
-            align-items: center; /* Center horizontally */
-            text-align: center; /* Center text */
-            gap: 40px; /* Space between blocks */
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 40px;
         }
         
         .footer-col h5 { 
@@ -669,7 +674,6 @@
         
         .contact-item { white-space: nowrap; }
         
-        /* Gold Dot Separator */
         .contact-item::after {
             content: '•';
             color: var(--primary-gold);
@@ -686,24 +690,20 @@
             margin: 0 auto 30px auto;
         }
 
-        /* Social Icons */
         .social-icons-container {
             display: flex;
-            gap: 40px; /* Wider gap for premium feel */
+            gap: 40px;
             justify-content: center;
             align-items: center;
         }
 
-        /* UPDATED SOCIAL ICON CSS: No transform */
         .social-icon {
-            color: var(--primary-gold); /* Default Gold Color */
+            color: var(--primary-gold);
             font-size: 1.5rem;
-            transition: opacity 0.4s ease; /* Only opacity change */
+            transition: opacity 0.4s ease;
         }
 
-        .social-icon:hover {
-            opacity: 0.7; /* Slight fade on hover, NO MOVEMENT */
-        }
+        .social-icon:hover { opacity: 0.7; }
 
         .copyright {
             margin-top: 80px;
@@ -715,21 +715,17 @@
             letter-spacing: 1px;
         }
 
-        /* =========================================
-           STORY PAGE STYLES (NEW PREMIUM LAYOUT)
-           ========================================= */
+        /* STORY PAGE STYLES */
         #story-page {
-            display: none; /* Hidden by default */
+            display: none;
             animation: fadeIn 0.8s ease-out;
             background-color: var(--bg-dark);
             min-height: 100vh;
-            
-            /* KEY UPDATE: Ensure story page covers fixed header */
-            position: absolute; /* or fixed, depending on if you want story to scroll */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 2000; /* Higher than header 1000 */
+            z-index: 2000;
         }
 
         .story-header {
@@ -752,17 +748,16 @@
         }
         .back-link:hover { color: var(--primary-gold); border-color: var(--primary-gold); }
 
-        /* Story Hero */
         .story-hero {
             padding: 100px 0 80px;
             display: flex;
             flex-direction: column;
-            align-items: flex-start; /* Left align */
+            align-items: flex-start;
             position: relative;
         }
 
         .story-hero h1 {
-            font-size: 4.5rem; /* Larger Title */
+            font-size: 4.5rem;
             margin-bottom: 20px;
             line-height: 1.1;
             color: var(--primary-gold);
@@ -781,11 +776,10 @@
             padding-left: 20px;
         }
 
-        /* Timeline Container */
         .story-timeline-container {
             position: relative;
-            padding-left: 40px; /* Space for the line */
-            border-left: 1px solid rgba(197, 157, 95, 0.3); /* The Golden Line */
+            padding-left: 40px;
+            border-left: 1px solid rgba(197, 157, 95, 0.3);
             margin-left: 20px;
         }
 
@@ -794,23 +788,21 @@
             position: relative;
         }
 
-        /* The Year Watermark */
         .chapter-year {
             position: absolute;
             top: -60px;
             left: -60px;
             font-family: var(--font-heading);
             font-size: 8rem;
-            color: rgba(255, 255, 255, 0.03); /* Subtle watermark */
+            color: rgba(255, 255, 255, 0.03);
             z-index: 0;
             line-height: 1;
             font-weight: 700;
         }
 
-        /* Chapter Dot on Timeline */
         .chapter-dot {
             position: absolute;
-            left: -46px; /* Adjust based on container padding */
+            left: -46px;
             top: 10px;
             width: 12px;
             height: 12px;
@@ -819,10 +811,7 @@
             border-radius: 50%;
         }
 
-        .chapter-content {
-            position: relative;
-            z-index: 1;
-        }
+        .chapter-content { position: relative; z-index: 1; }
 
         .chapter-title {
             font-size: 2rem;
@@ -835,11 +824,10 @@
             color: var(--text-muted);
             font-size: 1.1rem;
             margin-bottom: 1.5rem;
-            text-align: left; /* Strict Left Alignment */
-            max-width: 650px; /* Optimal reading width */
+            text-align: left;
+            max-width: 650px;
         }
 
-        /* Highlight Quote Box */
         .story-quote-box {
             border: 1px solid rgba(197, 157, 95, 0.2);
             padding: 40px;
@@ -856,68 +844,56 @@
             line-height: 1.4;
         }
 
-        .highlight { color: white; font-weight: 400; }
-
-        /* Footer inside Story */
         .story-footer {
             text-align: left;
-            padding: 50px 0 50px 60px; /* Align with content */
+            padding: 50px 0 50px 60px;
             border-top: 1px solid rgba(255,255,255,0.05);
             color: #444;
             font-size: 0.8rem;
             margin-top: 50px;
         }
 
-        /* Responsive Story */
+        /* Responsive */
         @media (max-width: 768px) {
-            /* General Mobile Adjustments */
-            section { padding: 60px 0; } /* Reduce section padding */
-            .hero-content h2 { font-size: 2.5rem; } /* Smaller Hero Title */
+            section { padding: 60px 0; }
+            .hero-content h2 { font-size: 2.5rem; }
             .section-header h4, .portfolio-section h4, .text-block h4, .process-block h4 { font-size: 2.5rem; }
             
-            /* Layout Resets to Single Column */
             .split-layout { grid-template-columns: 1fr; gap: 40px; }
             .process-grid { grid-template-columns: 1fr; gap: 40px; }
-            .process-grid::before { display: none; } /* Hide horizontal line */
+            .process-grid::before { display: none; }
             .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
             .commitment-grid { grid-template-columns: 1fr; gap: 30px; }
-            /* Added: Force materials to single column to prevent overflow on small screens */
-            .material-grid { grid-template-columns: 1fr; gap: 30px; } 
+            .material-grid { grid-template-columns: 1fr; gap: 25px; } 
             
-            /* Navigation Stack & Toggle */
             .site-header .container { 
                 flex-direction: row; 
                 flex-wrap: wrap; 
-                justify-content: space-between; /* Logo Left, Burger Right */
+                justify-content: space-between;
                 align-items: center;
             }
             
-            .logo { 
-                flex-direction: row; /* Keep logo horizontal to save height */
-                gap: 10px; 
-                text-align: left;
-            }
-            
-            .logo h1 { font-size: 1.2rem; } /* Slightly smaller text */
-            .logo-image { height: 40px; width: 40px; border-radius: 8px; /* Slightly adjusted for mobile if needed */ }
+            .logo { flex-direction: row; gap: 10px; text-align: left; }
+            .logo h1 { font-size: 1.2rem; }
+            .logo-image { height: 40px; width: 40px; }
 
             .mobile-menu-icon { 
                 display: block; 
                 cursor: pointer;
                 font-size: 1.5rem;
                 color: var(--primary-gold);
-                padding: 10px; /* larger touch target */
+                padding: 10px;
             }
 
             .main-nav {
                 width: 100%;
-                display: none; /* Hidden by default */
+                display: none;
                 margin-top: 15px;
                 border-top: 1px solid rgba(255,255,255,0.05);
             }
             
             .main-nav.active {
-                display: block; /* Show when active */
+                display: block;
                 animation: fadeIn 0.3s ease;
             }
 
@@ -928,21 +904,18 @@
                 align-items: center;
             }
             
-            /* Story Page Mobile */
             .story-hero h1 { font-size: 3rem; }
             .chapter-year { font-size: 5rem; left: 0; top: -40px; }
             .story-timeline-container { padding-left: 20px; border-left: none; margin-left: 0;}
-            .chapter-dot { display: none; } /* Hide dot on mobile for cleaner look */
+            .chapter-dot { display: none; }
             .story-hero p.subtitle { margin-left: 0; border-left: none; padding-left: 0; margin-top: 10px;}
             
-            /* CTA & Footer Mobile */
             .cta-frame { padding: 40px 20px; }
             .cta-section h3 { font-size: 2.2rem; }
             .contact-details { flex-direction: column; gap: 10px; }
             .contact-item::after { display: none; }
             .social-icons-container { gap: 30px; }
             
-            /* Add space to top for mobile due to fixed header */
             #main-content { padding-top: 80px; }
             .float-whatsapp { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 24px;}
         }
@@ -954,34 +927,26 @@
     </style>
     
     <script>
-        // Variables to store scroll position
         let savedScrollPosition = 0;
 
         function showStory() {
-            // 1. Save current scroll position before leaving Home
             savedScrollPosition = window.scrollY;
-            
             document.getElementById('main-content').style.display = 'none';
             document.getElementById('story-page').style.display = 'block';
-            window.scrollTo(0, 0); // Scroll Story page to top
+            window.scrollTo(0, 0);
             
-            // Close mobile menu if open
             const nav = document.querySelector('.main-nav');
             if(nav) nav.classList.remove('active');
         }
 
-        // Updated showHome function with optional restore parameter
         function showHome(restoreScroll = false) {
             document.getElementById('story-page').style.display = 'none';
             document.getElementById('main-content').style.display = 'block';
             
             if (restoreScroll) {
-                // 2. If 'Back' button clicked, restore position
                 window.scrollTo(0, savedScrollPosition);
             } 
-            // If just navigating normally (e.g. clicking logo), we don't force scroll
             
-            // Close mobile menu if open
             const nav = document.querySelector('.main-nav');
             if(nav) nav.classList.remove('active');
         }
@@ -1007,10 +972,8 @@
             }
             
             window.addEventListener('scroll', revealOnScroll);
-            // Trigger once on load
             revealOnScroll(); 
             
-            // 2. Dynamic Header Background
             const header = document.querySelector('.site-header');
             
             window.addEventListener('scroll', () => {
@@ -1025,7 +988,7 @@
 </head>
 <body>
 
-    <!-- NEW: FLOATING WHATSAPP BUTTON -->
+    <!-- FLOATING WHATSAPP BUTTON -->
     <a href="https://wa.me/601155009133?text=Hi,%20I%20would%20like%20to%20know%20more%20about%20your%20premium%20wall%20finishes." class="float-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -1034,7 +997,6 @@
     <header class="site-header">
         <div class="container">
             <div class="logo" onclick="showHome()">
-                <!-- UPDATED SRC: Using the new logo file -->
                 <img src="logo.jpg" alt="MODO WALLCRAFT Logo" class="logo-image">
                 <div class="logo-text">
                     <h1>MODO WALLCRAFT</h1>
@@ -1046,7 +1008,6 @@
             </div>
             <nav class="main-nav">
                 <ul>
-                    <!-- Regular Nav Links: Just show home (no forced restore), then scroll to section -->
                     <li><a onclick="showHome(); document.getElementById('home').scrollIntoView();">Home</a></li>
                     <li><a onclick="showHome(); document.getElementById('materials').scrollIntoView();">Materials</a></li>
                     <li><a onclick="showHome(); document.getElementById('projects').scrollIntoView();">Projects</a></li>
@@ -1062,7 +1023,6 @@
         <!-- HERO SECTION -->
         <section id="home" class="hero-section">
             <div class="hero-content">
-                <!-- Added reveal class -->
                 <h2 class="reveal">Craft Your Signature Feature Wall.</h2>
                 <div class="separator-line reveal" style="margin-bottom: 40px;"></div>
             </div>
@@ -1084,44 +1044,82 @@
                     <h4>Curated Textures</h4>
                 </div>
                 
-                <!-- GRID UPDATED: Added AI Tool as 3rd Item -->
+                <!-- 5 DISTINCT MATERIALS GRID -->
                 <div class="material-grid">
-                    <!-- Material 1: Suzuka® Strato -->
-                    <a href="strato.html" class="material-card-link reveal">
+                    
+                    <!-- Material 1: Suzuka® Strato Elloura -->
+                    <a href="elloura.html" class="material-card-link reveal">
                         <div class="material-card">
-                            <img src="strato.jpg" alt="Suzuka Strato" class="material-img">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=800&auto=format&fit=crop" alt="Suzuka Strato Elloura" class="material-img">
                             <div class="card-content">
-                                <h5>Suzuka® Strato</h5>
-                                <p>Contemporary textured paint series ranging from industrial cement to velvety satin. Defines modern interior elegance.</p>
+                                <div>
+                                    <span class="card-badge">Strato Series</span>
+                                    <h5>Suzuka® Strato Elloura</h5>
+                                    <p>Smooth & pearlescent interior finish. Subtle shimmer under light with low VOC eco-friendly properties.</p>
+                                </div>
                             </div>
                         </div>
                     </a>
 
-                    <!-- Material 2: Suzuka® Trowel Stone -->
+                    <!-- Material 2: Suzuka® Strato Linnen -->
+                    <a href="linnen.html" class="material-card-link reveal">
+                        <div class="material-card">
+                            <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800&auto=format&fit=crop" alt="Suzuka Strato Linnen" class="material-img">
+                            <div class="card-content">
+                                <div>
+                                    <span class="card-badge">Strato Series</span>
+                                    <h5>Suzuka® Strato Linnen</h5>
+                                    <p>Matte & grainy fabric-inspired wall finish delivering earthy architectural tones with a 10-Year warranty.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Material 3: Suzuka® Strato Velours -->
+                    <a href="velours.html" class="material-card-link reveal">
+                        <div class="material-card">
+                            <img src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=800&auto=format&fit=crop" alt="Suzuka Strato Velours" class="material-img">
+                            <div class="card-content">
+                                <div>
+                                    <span class="card-badge">Strato Series</span>
+                                    <h5>Suzuka® Strato Velours</h5>
+                                    <p>Tactile velvet coating offering rich depth, warmth, crack resistance, and anti-chalking durability.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Material 4: Suzuka® Trowel Stone -->
                     <a href="trowel.html" class="material-card-link reveal">
                         <div class="material-card">
                             <img src="trowel.jpg" alt="Suzuka Trowel Stone" class="material-img">
                             <div class="card-content">
-                                <h5>Suzuka® Trowel Stone</h5>
-                                <p>Natural pebble stone aggregate finish. Creates a rugged, organic surface with superior durability for exteriors.</p>
+                                <div>
+                                    <span class="card-badge">Stone Aggregate</span>
+                                    <h5>Suzuka® Trowel Stone</h5>
+                                    <p>Natural fine pebble stone & mica shimmer finish for rugged exterior facades and interior feature panels.</p>
+                                </div>
                             </div>
                         </div>
                     </a>
 
-                    <!-- NEW: AI VISUALIZER TOOL CARD -->
+                    <!-- Material 5: AI Wall Visualizer Tool -->
                     <a href="ai_tool.html" class="material-card-link reveal">
-                        <div class="material-card ai-tool-card" style="border-color: var(--primary-gold);">
-                            <!-- Using a gradient overlay/icon instead of a static image for tech feel -->
-                            <div class="image-placeholder" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:15px;">
-                                <i class="fas fa-wand-magic-sparkles" style="font-size: 3rem; color: var(--primary-gold); text-shadow: 0 0 15px rgba(197, 157, 95, 0.6);"></i>
-                                <span style="color:white; font-family:var(--font-heading); letter-spacing:2px; font-size:0.9rem;">TRY IT NOW</span>
+                        <div class="material-card" style="border-color: rgba(197, 157, 95, 0.4); background: linear-gradient(180deg, #18181a 0%, #121212 100%);">
+                            <div style="height: 250px; background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:15px; position:relative; overflow:hidden;">
+                                <i class="fas fa-wand-magic-sparkles" style="font-size: 3.5rem; color: var(--primary-gold); filter: drop-shadow(0 0 15px rgba(197, 157, 95, 0.6));"></i>
+                                <span style="color:white; font-family:var(--font-heading); letter-spacing:3px; font-size:0.85rem; font-weight:600;">INTERACTIVE TOOL</span>
                             </div>
-                            <div class="card-content" style="background: linear-gradient(to top, rgba(197, 157, 95, 0.1), transparent);">
-                                <h5 style="color: var(--primary-gold);">AI Wall Visualizer</h5>
-                                <p>Not sure which texture fits? Take a photo of your wall and let our AI show you the finished look instantly.</p>
+                            <div class="card-content" style="background: linear-gradient(to top, rgba(197, 157, 95, 0.08), transparent);">
+                                <div>
+                                    <span class="card-badge" style="color: #E6CA85;"><i class="fas fa-sparkles"></i> AI Simulation</span>
+                                    <h5 style="color: var(--primary-gold);">AI Wall Visualizer</h5>
+                                    <p>Upload a photo of your wall and preview Elloura, Linnen, Velours or Trowel textures instantly.</p>
+                                </div>
                             </div>
                         </div>
                     </a>
+
                 </div>
             </div>
         </section>
@@ -1132,7 +1130,6 @@
                 <h4 class="reveal">Projects</h4>
                 <div class="gallery-grid">
                     <div class="gallery-item reveal" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=600&auto=format&fit=crop'); background-size: cover;">
-                        <!-- UPDATED LOCATION NAMES -->
                         <span>Eco Botanic</span>
                     </div>
                     <div class="gallery-item reveal" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop'); background-size: cover;">
@@ -1151,30 +1148,23 @@
                 <div class="split-layout">
                     <div class="text-block reveal">
                         <span class="section-tag">The Artisan</span>
-                        
-                        <!-- Headline -->
                         <h4>Honest Craftsmanship.</h4>
                         
-                        <!-- Sub-headline (Styled for emphasis) -->
                         <p style="font-size: 1.25rem; color: var(--text-main); margin-bottom: 1rem; font-weight: 400; letter-spacing: 0.5px;">
                             Led by a Master, Guided by Integrity.
                         </p>
 
-                        <!-- Body Text -->
                         <p>MODO WALLCRAFT is built on over 30 years of hands-on experience. We are led by a master craftsman who has spent decades perfecting the touch of a trowel.</p>
                         
-                        <!-- Quote -->
                         <div class="pull-quote">
                             "True skill isn't just about knowing how to apply a texture—it's having the honesty to tell you what works, and what doesn't."
                         </div>
 
-                        <!-- Closing -->
                         <p>We blend old-school dedication with modern style. We don't just cover a wall; we treat your home as if it were our own.</p>
                         
                         <a onclick="showStory()" class="read-story-link">Read Our Story</a>
                     </div>
                     <div class="image-block reveal">
-                        <!-- Updated to use img tag for easier replacement -->
                         <img src="Artisan.jpg" alt="MODO Wallcraft Artisan" class="about-image">
                     </div>
                 </div>
@@ -1254,15 +1244,13 @@
             </div>
         </section>
 
-        <!-- FOOTER (Centered Layout) -->
+        <!-- FOOTER -->
         <footer class="site-footer">
             <div class="container">
                 <div class="footer-content">
                     
-                    <!-- 1. TITLE -->
                     <h5>Contact</h5>
 
-                    <!-- 2. INFO (Horizontal Row) -->
                     <div class="contact-details">
                         <span class="contact-item">
                             <a href="mailto:beizuling@gmail.com">beizuling@gmail.com</a>
@@ -1271,16 +1259,10 @@
                         <span class="contact-item">SG: +65 9897 1823</span>
                     </div>
 
-                    <!-- 3. COLLAB NOTE -->
                     <div class="collab-note">
                         Collaborations with Architects & Interior Designers are welcome.
                     </div>
 
-                    <!-- 4. SOCIAL ICONS (FontAwesome) -->
-                    <!-- 
-                        FIXED: Used FontAwesome icons to ensure they display correctly in preview.
-                        These vector icons are standard for web design and scale perfectly.
-                    -->
                     <div class="social-icons-container">
                         <a href="https://instagram.com" target="_blank" class="social-icon">
                             <i class="fab fa-instagram"></i>
@@ -1288,7 +1270,6 @@
                         <a href="https://facebook.com" target="_blank" class="social-icon">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <!-- Generic 'Book' icon for XiaoHongShu as standard FA doesn't have it -->
                         <a href="https://xiaohongshu.com" target="_blank" class="social-icon">
                             <i class="fas fa-book-open"></i>
                         </a>
@@ -1303,12 +1284,11 @@
         </footer>
     </main>
 
-    <!-- STORY PAGE CONTENT (New Premium Layout) -->
+    <!-- STORY PAGE CONTENT -->
     <div id="story-page">
         <div class="container">
             <div class="story-header">
                 <span style="font-family:var(--font-heading); letter-spacing:1px; color:white;">MODO WALLCRAFT</span>
-                <!-- IMPORTANT: Calling showHome(true) to restore scroll position -->
                 <a onclick="showHome(true)" class="back-link">← Back to Home</a>
             </div>
 
@@ -1319,7 +1299,6 @@
 
             <div class="story-timeline-container">
                 
-                <!-- Chapter 1 -->
                 <div class="story-chapter">
                     <div class="chapter-dot"></div>
                     <div class="chapter-year">1992</div>
@@ -1330,7 +1309,6 @@
                     </div>
                 </div>
 
-                <!-- Chapter 2 -->
                 <div class="story-chapter">
                     <div class="chapter-dot"></div>
                     <div class="chapter-year">2015</div>
@@ -1338,7 +1316,6 @@
                         <div class="chapter-title">The Shift</div>
                         <p>The transition to Suzuka® textures wasn't a business decision; it was a craftsman's choice. We realized that standard paint flatters nothing; it only covers. Texture, however, interacts with light. It changes from morning to evening.</p>
                         
-                        <!-- Highlight Quote Block -->
                         <div class="story-quote-box">
                             <p>“We traded speed for precision, and volume for quality.”</p>
                         </div>
@@ -1347,7 +1324,6 @@
                     </div>
                 </div>
 
-                <!-- Chapter 3 -->
                 <div class="story-chapter">
                     <div class="chapter-dot"></div>
                     <div class="chapter-year">NOW</div>
