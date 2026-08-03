@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MODO WALLCRAFT - Suzuka® Strato Elloura Matte & Pearlescent Interior Textured Paint.">
+    <title>MODO WALLCRAFT | Suzuka® Strato Elloura</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS for base utilities -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        :root {
+            --primary-gold: #C59D5F;
+            --gold-light: #E6CA85;
+            --gold-dark: #8C6A34;
+            --bg-dark: #0F0F10;
+            --bg-card: #161618;
+            --bg-card-alt: #1D1D20;
+            --border-color: rgba(197, 157, 95, 0.22);
+            --border-gold-glow: rgba(224, 179, 84, 0.45);
+            --text-main: #ECECEC;
+            --text-muted: #A0A0A5;
+            --font-heading: 'Cinzel', serif;
+            --font-subheading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            letter-spacing: 0.02em;
+            overflow-x: hidden;
+        }
+
+        /* Typography Customization */
+        h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--primary-gold); }
+        .font-playfair { font-family: var(--font-subheading); }
+
+        /* Gold Gradient Text */
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0D0 0%, #C59D5F 50%, #9E783D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border-glow {
+            border: 1px solid var(--border-color);
+            transition: all 0.4s ease;
+        }
+        .gold-border-glow:hover {
+            border-color: var(--primary-gold);
+            box-shadow: 0 0 20px rgba(197, 157, 95, 0.18);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0F0F10; }
+        ::-webkit-scrollbar-thumb { background: #2A2A2E; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary-gold); }
+
+        /* Hero Background with Arch Soft Texture Vibe - Clean & High Contrast */
+        .hero-banner {
+            background: linear-gradient(180deg, rgba(12, 12, 14, 0.75) 0%, rgba(12, 12, 14, 0.88) 60%, #0F0F10 100%), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop') center 40%/cover no-repeat;
+            position: relative;
+            filter: contrast(1.12);
+        }
+        
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(to top, #0F0F10, transparent);
+        }
+
+        /* Subtitle Architectural Blue */
+        .subtitle-blue {
+            color: #82A8D8;
+            text-shadow: 0 0 20px rgba(130, 168, 216, 0.25);
+        }
+
+        /* Button Styling */
+        .btn-gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #C59D5F 50%, #A37F43 100%);
+            color: #0F0F10;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.35s ease;
+            box-shadow: 0 4px 20px rgba(197, 157, 95, 0.25);
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, #E6CA85 0%, #D4AF37 100%);
+        }
+
+        .btn-outline-gold {
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+        .btn-outline-gold:hover {
+            background: rgba(197, 157, 95, 0.12);
+            color: #FFF;
+            border-color: var(--gold-light);
+        }
+
+        /* Color Swatch Card */
+        .color-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .color-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary-gold);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 15px rgba(197, 157, 95, 0.2);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- NAVIGATION HEADER -->
+    <header class="site-header fixed top-0 left-0 w-full z-50 py-4 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <!-- Left: Brand Logo & Title -->
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-full border border-[var(--primary-gold)] p-0.5 flex items-center justify-center bg-black/50 group-hover:border-[var(--gold-light)] transition-colors">
+                    <div class="w-full h-full rounded-full bg-[var(--primary-gold)] flex items-center justify-center text-black font-bold text-xs tracking-tighter">
+                        MW
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-base md:text-lg font-bold tracking-[3px] text-white uppercase font-heading group-hover:text-[var(--primary-gold)] transition-colors">MODO WALLCRAFT</span>
+                    <span class="text-[9px] tracking-[2px] text-[var(--primary-gold)] uppercase -mt-1 font-body opacity-80">Architectural Finishes</span>
+                </div>
+            </a>
+
+            <!-- Right: Back to Main Page Button -->
+            <a href="index.html" class="btn-outline-gold px-4 py-2 rounded-sm text-xs font-medium flex items-center gap-2 group">
+                <i class="fas fa-arrow-left text-xs transition-transform group-hover:-translate-x-1"></i>
+                <span class="hidden sm:inline">Back to Main Page</span>
+                <span class="sm:hidden">Back</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-banner min-h-[85vh] flex items-center justify-center pt-28 pb-16 px-6 text-center">
+        <div class="max-w-4xl mx-auto relative z-10 flex flex-col items-center">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[var(--border-color)] bg-black/50 text-[var(--primary-gold)] text-xs tracking-[3px] uppercase mb-8 backdrop-blur-md">
+                <i class="fas fa-gem text-[10px]"></i> Suzuka® Strato Collection
+            </div>
+
+            <!-- Bolder Elloura Title matching reference image -->
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-semibold tracking-[2px] mb-4 text-[#C59D5F] font-playfair drop-shadow-lg">
+                Elloura
+            </h1>
+            
+            <!-- High-end Architectural Blue Subtitle -->
+            <p class="text-sm md:text-base lg:text-lg uppercase tracking-[5px] subtitle-blue font-semibold mb-10 max-w-2xl">
+                Smooth &amp; Pearlescent Interior Finish
+            </p>
+
+            <!-- Quick Badges -->
+            <div class="flex flex-wrap justify-center gap-4 mt-2">
+                <span class="px-4 py-2 rounded-full bg-[#1A1A1D]/90 border border-white/10 text-gray-200 text-xs flex items-center gap-2 backdrop-blur-sm">
+                    <i class="fas fa-leaf text-[var(--primary-gold)]"></i> Low VOC &amp; Odor
+                </span>
+                <span class="px-4 py-2 rounded-full bg-[#1A1A1D]/90 border border-white/10 text-gray-200 text-xs flex items-center gap-2 backdrop-blur-sm">
+                    <i class="fas fa-home text-[var(--primary-gold)]"></i> Interior Use Only
+                </span>
+                <span class="px-4 py-2 rounded-full bg-[#1A1A1D]/90 border border-white/10 text-gray-200 text-xs flex items-center gap-2 backdrop-blur-sm">
+                    <i class="fas fa-hand-sparkles text-[var(--primary-gold)]"></i> Easy Maintenance
+                </span>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 10 FEATURES GRID SECTION -->
+    <section class="py-20 px-6 bg-[#0B0B0C] relative">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="text-center mb-14">
+                <span class="text-[var(--primary-gold)] text-xs tracking-[4px] uppercase font-semibold block mb-2">Performance & Qualities</span>
+                <h2 class="text-2xl md:text-4xl font-normal text-white tracking-wider">Product Characteristics</h2>
+                <div class="w-12 h-[2px] bg-[var(--primary-gold)] mx-auto mt-4"></div>
+            </div>
+
+            <!-- 10 Features Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+                
+                <!-- Feature 1 -->
+                <div class="gold-border-glow bg-[var(--bg-card)] p-5 rounded-sm flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-full bg-black/60 border border-[var(--border-color)] flex items-center justify-center text-[var(--primary-gold)] text-lg mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3 class="text-xs font-medium text-gray-200 tracking-wider">Low VOC & Odor</h3>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="gold-border-glow bg-[var(--bg-card)] p-5 rounded-sm flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-full bg-black/60 border border-[var(--border-color)] flex items-center justify-center text-[var(--primary-gold)] text-lg mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3 class="text-xs font-medium text-gray-200 tracking-wider">Water Based & Eco</h3>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="gold-border-glow bg-[var(--bg-card)] p-5 rounded-sm flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-full bg-black/60 border border-[var(--border-color)] flex items-center justify-center text-[var(--primary-gold)] text-lg mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="text-xs font-medium text-gray-200 tracking-wider">Formaldehyde Free</h3>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="gold-border-glow bg-[var(--bg-card)] p-5 rounded-sm flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-full bg-black/60 border border-[var(--border-color)] flex items-center justify-center text-[var(--primary-gold)] text-lg mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-paint-roller"></i>
+                    </div>
+                    <h3 class="text-xs font-medium text-gray-200 tracking-wider">Easy Application</h3>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="gold-border-glow bg-[var(--bg-card)] p-5 rounded-sm flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-full bg-black/60 border border-[var(--border-color)] flex items-center justify-center text-[var(--primary-gold)] text-lg mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-border-all"></i>
+                    </div>
+                    <h3 class="text-xs font-medium text-gray-200 tracking-wider">Ceiling Applicable</h3>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="gold-border-glow bg-[var(--bg-card)] p-5 rounded-sm flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-full bg-black/60 border border-[var(--border-color)] flex items-center justify-center text-[var(--primary-gold)] text-lg mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-paintbrush"></i>
+                    </div>
+                    <h3 class="text-xs font-medium text-gray-200 tracking-wider">Easy Touch Up</h3>
+                </div>
+
+                <!-- Feature 7 -->
+                <div class="gold-border-glow bg-[var(--bg-card)] p-5 rounded-sm flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-full bg-black/60 border border-[var(--border-color)] flex items-center justify-center text-[var(--primary-gold)] text-lg mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-hand-sparkles"></i>
+                    </div>
+                    <h3 class="text-xs font-medium text-gray-200 tracking-wider">Easy Maintenance</h3>
+                </div>
+
+                <!-- Feature 8 -->
+                <div class="gold-border-glow bg-[var(--bg-card)] p-5 rounded-sm flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-full bg-black/60 border border-[var(--border-color)] flex items-center justify-center text-[var(--primary-gold)] text-lg mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="text-xs font-medium text-gray-200 tracking-wider">Lead Free Safety</h3>
+                </div>
+
+                <!-- Feature 9 -->
+                <div class="gold-border-glow bg-[var(--bg-card)] p-5 rounded-sm flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-full bg-black/60 border border-[var(--border-color)] flex items-center justify-center text-[var(--primary-gold)] text-lg mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="text-xs font-medium text-gray-200 tracking-wider">Pearly Finish</h3>
+                </div>
+
+                <!-- Feature 10 -->
+                <div class="gold-border-glow bg-[var(--bg-card)] p-5 rounded-sm flex flex-col items-center text-center group">
+                    <div class="w-12 h-12 rounded-full bg-black/60 border border-[var(--border-color)] flex items-center justify-center text-[var(--primary-gold)] text-lg mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xs font-medium text-gray-200 tracking-wider">Mold & Mildew Guard</h3>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- COLOR PALETTE SECTION -->
+    <section class="py-20 px-6 bg-[var(--bg-dark)]">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="text-center mb-14">
+                <span class="text-[var(--primary-gold)] text-xs tracking-[4px] uppercase font-semibold block mb-2">Color Palette</span>
+                <h2 class="text-3xl md:text-5xl font-playfair italic text-white font-normal mb-4">10 Pearlescent Tones</h2>
+                <p class="text-gray-400 text-sm max-w-xl mx-auto font-light leading-relaxed">
+                    From breeze-soft whites to laurel green, each Elloura tone carries a quiet pearlescence that shifts gently with the light in the room.
+                </p>
+            </div>
+
+            <!-- 10 Color Swatches Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-5">
+                
+                <!-- Swatch 1 -->
+                <div class="color-card rounded-sm overflow-hidden cursor-pointer" onclick="openColorModal('STE-101', 'Breeze White', '#EDE7DE')">
+                    <div class="h-32 w-full transition-transform duration-500 hover:scale-105" style="background-color: #EDE7DE;"></div>
+                    <div class="p-4 bg-[var(--bg-card)]">
+                        <span class="text-[var(--primary-gold)] text-[10px] tracking-[2px] font-semibold uppercase block mb-1">STE-101</span>
+                        <h3 class="text-white text-sm font-playfair font-medium">Breeze White</h3>
+                    </div>
+                </div>
+
+                <!-- Swatch 2 -->
+                <div class="color-card rounded-sm overflow-hidden cursor-pointer" onclick="openColorModal('STE-102', 'Whisper Grey', '#D9D5CF')">
+                    <div class="h-32 w-full transition-transform duration-500 hover:scale-105" style="background-color: #D9D5CF;"></div>
+                    <div class="p-4 bg-[var(--bg-card)]">
+                        <span class="text-[var(--primary-gold)] text-[10px] tracking-[2px] font-semibold uppercase block mb-1">STE-102</span>
+                        <h3 class="text-white text-sm font-playfair font-medium">Whisper Grey</h3>
+                    </div>
+                </div>
+
+                <!-- Swatch 3 -->
+                <div class="color-card rounded-sm overflow-hidden cursor-pointer" onclick="openColorModal('STE-103', 'Sky Grey', '#D7D9D6')">
+                    <div class="h-32 w-full transition-transform duration-500 hover:scale-105" style="background-color: #D7D9D6;"></div>
+                    <div class="p-4 bg-[var(--bg-card)]">
+                        <span class="text-[var(--primary-gold)] text-[10px] tracking-[2px] font-semibold uppercase block mb-1">STE-103</span>
+                        <h3 class="text-white text-sm font-playfair font-medium">Sky Grey</h3>
+                    </div>
+                </div>
+
+                <!-- Swatch 4 -->
+                <div class="color-card rounded-sm overflow-hidden cursor-pointer" onclick="openColorModal('STE-104', 'Platinum Grey', '#DBD7D2')">
+                    <div class="h-32 w-full transition-transform duration-500 hover:scale-105" style="background-color: #DBD7D2;"></div>
+                    <div class="p-4 bg-[var(--bg-card)]">
+                        <span class="text-[var(--primary-gold)] text-[10px] tracking-[2px] font-semibold uppercase block mb-1">STE-104</span>
+                        <h3 class="text-white text-sm font-playfair font-medium">Platinum Grey</h3>
+                    </div>
+                </div>
+
+                <!-- Swatch 5 -->
+                <div class="color-card rounded-sm overflow-hidden cursor-pointer" onclick="openColorModal('STE-105', 'Downy Daisy', '#F1E1CC')">
+                    <div class="h-32 w-full transition-transform duration-500 hover:scale-105" style="background-color: #F1E1CC;"></div>
+                    <div class="p-4 bg-[var(--bg-card)]">
+                        <span class="text-[var(--primary-gold)] text-[10px] tracking-[2px] font-semibold uppercase block mb-1">STE-105</span>
+                        <h3 class="text-white text-sm font-playfair font-medium">Downy Daisy</h3>
+                    </div>
+                </div>
+
+                <!-- Swatch 6 -->
+                <div class="color-card rounded-sm overflow-hidden cursor-pointer" onclick="openColorModal('STE-106', 'Pastel Mauve', '#DDD1CE')">
+                    <div class="h-32 w-full transition-transform duration-500 hover:scale-105" style="background-color: #DDD1CE;"></div>
+                    <div class="p-4 bg-[var(--bg-card)]">
+                        <span class="text-[var(--primary-gold)] text-[10px] tracking-[2px] font-semibold uppercase block mb-1">STE-106</span>
+                        <h3 class="text-white text-sm font-playfair font-medium">Pastel Mauve</h3>
+                    </div>
+                </div>
+
+                <!-- Swatch 7 -->
+                <div class="color-card rounded-sm overflow-hidden cursor-pointer" onclick="openColorModal('STE-107', 'Mellow Taupe', '#B9B0A9')">
+                    <div class="h-32 w-full transition-transform duration-500 hover:scale-105" style="background-color: #B9B0A9;"></div>
+                    <div class="p-4 bg-[var(--bg-card)]">
+                        <span class="text-[var(--primary-gold)] text-[10px] tracking-[2px] font-semibold uppercase block mb-1">STE-107</span>
+                        <h3 class="text-white text-sm font-playfair font-medium">Mellow Taupe</h3>
+                    </div>
+                </div>
+
+                <!-- Swatch 8 -->
+                <div class="color-card rounded-sm overflow-hidden cursor-pointer" onclick="openColorModal('STE-108', 'Moonlit Cream', '#E9CCA1')">
+                    <div class="h-32 w-full transition-transform duration-500 hover:scale-105" style="background-color: #E9CCA1;"></div>
+                    <div class="p-4 bg-[var(--bg-card)]">
+                        <span class="text-[var(--primary-gold)] text-[10px] tracking-[2px] font-semibold uppercase block mb-1">STE-108</span>
+                        <h3 class="text-white text-sm font-playfair font-medium">Moonlit Cream</h3>
+                    </div>
+                </div>
+
+                <!-- Swatch 9 -->
+                <div class="color-card rounded-sm overflow-hidden cursor-pointer" onclick="openColorModal('STE-109', 'Coral Petals', '#DDA89D')">
+                    <div class="h-32 w-full transition-transform duration-500 hover:scale-105" style="background-color: #DDA89D;"></div>
+                    <div class="p-4 bg-[var(--bg-card)]">
+                        <span class="text-[var(--primary-gold)] text-[10px] tracking-[2px] font-semibold uppercase block mb-1">STE-109</span>
+                        <h3 class="text-white text-sm font-playfair font-medium">Coral Petals</h3>
+                    </div>
+                </div>
+
+                <!-- Swatch 10 -->
+                <div class="color-card rounded-sm overflow-hidden cursor-pointer" onclick="openColorModal('STE-110', 'Green Laurel', '#90A1A4')">
+                    <div class="h-32 w-full transition-transform duration-500 hover:scale-105" style="background-color: #90A1A4;"></div>
+                    <div class="p-4 bg-[var(--bg-card)]">
+                        <span class="text-[var(--primary-gold)] text-[10px] tracking-[2px] font-semibold uppercase block mb-1">STE-110</span>
+                        <h3 class="text-white text-sm font-playfair font-medium">Green Laurel</h3>
+                    </div>
+                </div>
+
+            </div>
+
+            <p class="text-center text-xs text-gray-500 mt-10 max-w-2xl mx-auto italic font-light">
+                * Note: All color samples shown are as close to actual Suzuka® Strato Elloura shades as digital display technology allows. Physical color cards are available upon inquiry.
+            </p>
+        </div>
+    </section>
+
+    <!-- ECO STANDARDS & CERTIFICATIONS SECTION -->
+    <section class="py-20 px-6 bg-[var(--bg-dark)] border-t border-b border-white/5">
+        <div class="max-w-5xl mx-auto">
+            
+            <div class="grid md:grid-cols-3 gap-8 items-center text-center">
+                
+                <!-- Certification 1: LEED -->
+                <div class="p-8 rounded-sm bg-[var(--bg-card)] border border-white/5 flex flex-col items-center hover:border-[var(--primary-gold)] transition-colors">
+                    <div class="w-20 h-20 rounded-full border-2 border-[var(--primary-gold)]/40 p-2 flex items-center justify-center mb-5 bg-black/40">
+                        <!-- Custom SVG Leaf Seal -->
+                        <svg class="w-10 h-10 text-[var(--primary-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v18m0-18C8 3 4 7 4 12s4 9 8 9m0-18c4 0 8 4 8 9s-4 9-8 9"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-white tracking-wide uppercase mb-2">LEED USGBC</h3>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed">
+                        LEED, US Green Building Council Standards
+                    </p>
+                </div>
+
+                <!-- Certification 2: California Prop 65 -->
+                <div class="p-8 rounded-sm bg-[var(--bg-card)] border border-white/5 flex flex-col items-center hover:border-[var(--primary-gold)] transition-colors">
+                    <div class="w-20 h-20 rounded-full border-2 border-[var(--primary-gold)]/40 p-2 flex items-center justify-center mb-5 bg-black/40">
+                        <svg class="w-10 h-10 text-[var(--primary-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-white tracking-wide uppercase mb-2">California Prop 65</h3>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed">
+                        California Proposition 65 Compliant Standard
+                    </p>
+                </div>
+
+                <!-- Certification 3: Eco Friendly -->
+                <div class="p-8 rounded-sm bg-[var(--bg-card)] border border-white/5 flex flex-col items-center hover:border-[var(--primary-gold)] transition-colors">
+                    <div class="w-20 h-20 rounded-full border-2 border-[var(--primary-gold)]/40 p-2 flex items-center justify-center mb-5 bg-black/40">
+                        <svg class="w-10 h-10 text-[var(--primary-gold)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-sm font-semibold text-white tracking-wide uppercase mb-2">Green Product</h3>
+                    <p class="text-xs text-gray-400 font-light leading-relaxed">
+                        Eco Friendly, Green Product Certified
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CALL TO ACTION / WHATSAPP SECTION -->
+    <section class="py-24 px-6 bg-gradient-to-b from-[#0F0F10] to-[#161619] relative overflow-hidden text-center">
+        <div class="max-w-3xl mx-auto relative z-10">
+            
+            <div class="w-16 h-16 rounded-full bg-[var(--primary-gold)]/10 border border-[var(--primary-gold)] flex items-center justify-center text-[var(--primary-gold)] text-2xl mx-auto mb-6">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+
+            <h2 class="text-3xl md:text-5xl font-playfair italic text-white font-normal mb-4">
+                Bring Elloura to Your Space
+            </h2>
+            
+            <p class="text-gray-400 text-sm max-w-lg mx-auto font-light mb-10 leading-relaxed">
+                Interested in sample physical swatches or custom wallcraft quotation? Connect with MODO WALLCRAFT directly on WhatsApp.
+            </p>
+
+            <a href="https://wa.me/601155009133?text=Hi%20MODO%20WALLCRAFT,%20I%20am%20interested%20in%20Suzuka%20Strato%20Elloura%20samples%20and%20quotation." 
+               target="_blank" 
+               class="btn-gold inline-flex items-center gap-3 px-8 py-4 rounded-xs text-sm font-bold">
+                <i class="fab fa-whatsapp text-lg"></i>
+                Request Elloura Samples via WhatsApp
+            </a>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-black border-t border-white/5 text-center text-xs text-gray-600">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                &copy; 2026 MODO WALLCRAFT Enterprise. All Rights Reserved.
+            </div>
+            <div class="flex gap-6 text-gray-500">
+                <a href="index.html" class="hover:text-[var(--primary-gold)] transition-colors">Main Page</a>
+                <span>•</span>
+                <a href="https://wa.me/601155009133" target="_blank" class="hover:text-[var(--primary-gold)] transition-colors">WhatsApp Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/601155009133?text=Hi%20MODO%20WALLCRAFT,%20I%20have%20an%20inquiry%20about%20Elloura." 
+       target="_blank" 
+       class="fixed bottom-6 right-6 z-50 w-14 h-14 bg-emerald-600 text-white rounded-full flex items-center justify-center text-2xl shadow-2xl hover:bg-emerald-500 hover:scale-110 transition-all border border-emerald-400/30">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Color Preview Modal -->
+    <div id="colorModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden items-center justify-center p-4">
+        <div class="bg-[var(--bg-card)] border border-[var(--primary-gold)] rounded-sm max-w-sm w-full p-6 text-center relative shadow-2xl">
+            <button onclick="closeColorModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="modalColorBox" class="h-40 w-full rounded-sm mb-4 border border-white/10"></div>
+            <span id="modalCode" class="text-[var(--primary-gold)] text-xs tracking-[2px] font-semibold uppercase block mb-1"></span>
+            <h3 id="modalName" class="text-white text-xl font-playfair mb-4"></h3>
+            <a href="https://wa.me/601155009133?text=Hi%20MODO%20WALLCRAFT,%20I%20want%20to%20inquire%20about%20Elloura%20color%20code:" 
+               id="modalWaBtn" 
+               target="_blank" 
+               class="btn-gold block w-full py-2.5 text-xs text-center font-bold">
+                Inquire This Color
+            </a>
+        </div>
+    </div>
+
+    <!-- JavaScript Interactions -->
+    <script>
+        function openColorModal(code, name, hex) {
+            document.getElementById('modalColorBox').style.backgroundColor = hex;
+            document.getElementById('modalCode').innerText = code;
+            document.getElementById('modalName').innerText = name;
+            document.getElementById('modalWaBtn').href = `https://wa.me/601155009133?text=Hi%20MODO%20WALLCRAFT,%20I%20would%20like%20to%20inquire%20about%20Suzuka%20Strato%20Elloura%20color%20${code}%20(${name}).`;
+            const modal = document.getElementById('colorModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeColorModal() {
+            const modal = document.getElementById('colorModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Close modal on click outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('colorModal');
+            if (event.target === modal) {
+                closeColorModal();
+            }
+        }
+    </script>
+</body>
+</html>
